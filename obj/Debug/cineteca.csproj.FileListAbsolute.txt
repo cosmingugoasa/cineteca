@@ -1,0 +1,10 @@
+C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\bin\Debug\cineteca.exe.config
+C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\bin\Debug\cineteca.exe
+C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\bin\Debug\cineteca.pdb
+C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\obj\Debug\cineteca.csprojAssemblyReference.cache
+C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\obj\Debug\cineteca.Cineteca.resources
+C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\obj\Debug\cineteca.Properties.Resources.resources
+C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\obj\Debug\cineteca.csproj.GenerateResource.cache
+C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\obj\Debug\cineteca.csproj.CoreCompileInputs.cache
+C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\obj\Debug\cineteca.exe
+C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\obj\Debug\cineteca.pdb
