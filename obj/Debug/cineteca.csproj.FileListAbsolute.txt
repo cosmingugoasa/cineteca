@@ -18,3 +18,11 @@ C:\Users\Dax\Documents\Uni\Tecnologie Programmazione Industriale\Programmi\cinet
 C:\Users\Dax\Documents\Uni\Tecnologie Programmazione Industriale\Programmi\cineteca\obj\Debug\cineteca.csproj.CoreCompileInputs.cache
 C:\Users\Dax\Documents\Uni\Tecnologie Programmazione Industriale\Programmi\cineteca\obj\Debug\cineteca.exe
 C:\Users\Dax\Documents\Uni\Tecnologie Programmazione Industriale\Programmi\cineteca\obj\Debug\cineteca.pdb
+C:\Users\Locas\Desktop\cineteca\obj\Debug\cineteca.csprojAssemblyReference.cache
+C:\Users\Locas\Desktop\cineteca\obj\Debug\cineteca.Cineteca.resources
+C:\Users\Locas\Desktop\cineteca\obj\Debug\cineteca.Properties.Resources.resources
+C:\Users\Locas\Desktop\cineteca\obj\Debug\cineteca.RegisterForm.resources
+C:\Users\Locas\Desktop\cineteca\obj\Debug\cineteca.csproj.GenerateResource.cache
+C:\Users\Locas\Desktop\cineteca\obj\Debug\cineteca.csproj.CoreCompileInputs.cache
+C:\Users\Locas\Desktop\cineteca\obj\Debug\cineteca.exe
+C:\Users\Locas\Desktop\cineteca\obj\Debug\cineteca.pdb
