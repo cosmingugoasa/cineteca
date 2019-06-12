@@ -10,66 +10,20 @@ using System.Windows.Forms;
 
 namespace cineteca
 {
-    public partial class Cineteca : Form
+    public partial class LoginForm : Form
     {
-        public Cineteca()
+        Form regForm = new RegisterForm();      //riferimento al form di registrazione         
+
+        public LoginForm()
         {
             InitializeComponent();
-            HideRegisterForm();
+            regForm.Hide();
         }
 
         private void bt_register_Click(object sender, EventArgs e)
         {
-            HideLoginForm();
-            ShowRegisterForm();
-        }
-
-        private void btn_login_redirect_Click(object sender, EventArgs e)
-        {
-            HideRegisterForm();
-            ShowLoginForm();
-        }
-
-        private void HideRegisterForm() {
-            tb_name_register.Hide();
-            tb_surname_register.Hide();
-            tb_email_register.Hide();
-            tb_password_register.Hide();
-            tb_repeat_password_register.Hide();
-            tb_admin_code.Hide();
-            l_asterisc.Hide();
-            btn_register.Hide();
-            btn_login_redirect.Hide();
-        }
-
-        private void ShowRegisterForm() {
-            tb_name_register.Show();
-            tb_surname_register.Show();
-            tb_email_register.Show();
-            tb_password_register.Show();
-            tb_repeat_password_register.Show();
-            tb_admin_code.Show();
-            l_asterisc.Show();
-            btn_register.Show();
-            btn_login_redirect.Show();
-        }
-
-        private void HideLoginForm() {
-            tb_email_login.Hide();
-            tb_password_login.Hide();
-            btn_login.Hide();
-            btn_register_redirect.Hide();
-
-            l_form_status.Text = "Alredy registered ? Click ";
-        }
-
-        private void ShowLoginForm() {
-            tb_email_login.Show();
-            tb_password_login.Show();
-            btn_login.Show();
-            btn_register_redirect.Show();
-
-            l_form_status.Text = "Not registered ? Click ";
-        }
+            regForm.Show();     //switch tra form di login e form di register
+            this.Hide();        //nascondo un form e visualizza l'altro
+        }       
     }
 }

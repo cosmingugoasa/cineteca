@@ -16,7 +16,7 @@ namespace cineteca
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Cineteca());
+            Application.Run(new LoginForm());
         }
     }
 }

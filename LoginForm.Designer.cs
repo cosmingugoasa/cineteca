@@ -1,6 +1,6 @@
 ﻿namespace cineteca
 {
-    partial class Cineteca
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.
@@ -82,7 +82,7 @@
             this.btn_register_redirect.UseVisualStyleBackColor = true;
             this.btn_register_redirect.Click += new System.EventHandler(this.bt_register_Click);
             // 
-            // Cineteca
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -93,8 +93,8 @@
             this.Controls.Add(this.btn_login);
             this.Controls.Add(this.tb_password_login);
             this.Controls.Add(this.tb_email_login);
-            this.Name = "Cineteca";
-            this.Text = "Login Cineteca";
+            this.Name = "LoginForm";
+            this.Text = "Login LoginForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
