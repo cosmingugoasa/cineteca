@@ -36,6 +36,8 @@ namespace cineteca
             tb_email_register.Hide();
             tb_password_register.Hide();
             tb_repeat_password_register.Hide();
+            tb_admin_code.Hide();
+            l_asterisc.Hide();
             btn_register.Hide();
             btn_login_redirect.Hide();
         }
@@ -46,6 +48,8 @@ namespace cineteca
             tb_email_register.Show();
             tb_password_register.Show();
             tb_repeat_password_register.Show();
+            tb_admin_code.Show();
+            l_asterisc.Show();
             btn_register.Show();
             btn_login_redirect.Show();
         }
