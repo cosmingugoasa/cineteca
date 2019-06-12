@@ -12,6 +12,6 @@ namespace WCFServer
     public interface IServerServices
     {
         [OperationContract]
-        void DoWork();
+        bool DoWork();
     }
 }

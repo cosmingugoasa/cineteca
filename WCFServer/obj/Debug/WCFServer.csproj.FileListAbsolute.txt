@@ -5,3 +5,12 @@ C:\Users\Locas\Desktop\cineteca\WCFServer\obj\Debug\WCFServer.csprojAssemblyRefe
 C:\Users\Locas\Desktop\cineteca\WCFServer\obj\Debug\WCFServer.csproj.CoreCompileInputs.cache
 C:\Users\Locas\Desktop\cineteca\WCFServer\obj\Debug\WCFServer.exe
 C:\Users\Locas\Desktop\cineteca\WCFServer\obj\Debug\WCFServer.pdb
+C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\WCFServer\bin\Debug\WCFServer.exe.config
+C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\WCFServer\bin\Debug\WCFServer.exe
+C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\WCFServer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\WCFServer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\WCFServer\obj\Debug\WCFServer.csproj.CoreCompileInputs.cache
+C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\WCFServer\obj\Debug\WCFServer.csproj.CopyComplete
+C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\WCFServer\obj\Debug\WCFServer.exe
+C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\WCFServer\obj\Debug\WCFServer.pdb
+C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\WCFServer\bin\Debug\WCFServer.pdb

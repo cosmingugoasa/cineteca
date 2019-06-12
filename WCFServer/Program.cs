@@ -14,17 +14,17 @@ namespace WCFServer
             try
             {
                 ServiceHost svcHost = new ServiceHost(typeof(ServerServices));      //Inizializzo un Server Host per i servizi implementati in "ServerServices"
-                svcHost.Open();     //Apre Il Server
+                svcHost.Open();                                                     //Apre Il Server
 
-                Console.WriteLine("Server Attivo !!!");
+                Console.WriteLine("Server Attivo.\nPremere invio per interrompere...");
                 Console.ReadLine();
                 svcHost.Close();
-                Console.WriteLine("Servizio Interrotto");
+                Console.WriteLine("Server Interrotto.");
 
             }
             catch (Exception ex)
             {
-                Console.WriteLine("UNTO: " + ex.ToString());
+                Console.WriteLine("Errore: " + ex.ToString());
             }
         }
     }

@@ -33,6 +33,8 @@
             this.btn_login = new System.Windows.Forms.Button();
             this.l_form_status = new System.Windows.Forms.Label();
             this.btn_register_redirect = new System.Windows.Forms.Button();
+            this.l_status = new System.Windows.Forms.Label();
+            this.btn_status = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tb_email_login
@@ -82,12 +84,32 @@
             this.btn_register_redirect.UseVisualStyleBackColor = true;
             this.btn_register_redirect.Click += new System.EventHandler(this.bt_register_Click);
             // 
+            // l_status
+            // 
+            this.l_status.AutoSize = true;
+            this.l_status.Location = new System.Drawing.Point(414, 189);
+            this.l_status.Name = "l_status";
+            this.l_status.Size = new System.Drawing.Size(44, 13);
+            this.l_status.TabIndex = 5;
+            this.l_status.Text = "status : ";
+            // 
+            // btn_status
+            // 
+            this.btn_status.BackColor = System.Drawing.Color.White;
+            this.btn_status.Location = new System.Drawing.Point(453, 189);
+            this.btn_status.Name = "btn_status";
+            this.btn_status.Size = new System.Drawing.Size(15, 15);
+            this.btn_status.TabIndex = 6;
+            this.btn_status.UseVisualStyleBackColor = false;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.ClientSize = new System.Drawing.Size(484, 211);
+            this.Controls.Add(this.btn_status);
+            this.Controls.Add(this.l_status);
             this.Controls.Add(this.btn_register_redirect);
             this.Controls.Add(this.l_form_status);
             this.Controls.Add(this.btn_login);
@@ -107,6 +129,8 @@
         private System.Windows.Forms.Button btn_login;
         private System.Windows.Forms.Label l_form_status;
         private System.Windows.Forms.Button btn_register_redirect;
+        private System.Windows.Forms.Label l_status;
+        private System.Windows.Forms.Button btn_status;
     }
 }
 
