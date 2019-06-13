@@ -12,4 +12,23 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="NuovoUtente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="myId" type="xs:int" />
+        <xs:element minOccurs="0" name="myNome" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="myCognome" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="myEmail" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="myPassword" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="myIsAdmin" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NuovoUtenteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="NuovoUtenteResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -14,5 +14,17 @@ namespace WCFServer
         {
             return true;
         }
+
+        public bool NuovoUtente(int myId, string myNome, string myCognome, string myEmail, string myPassword, string myIsAdmin) {
+
+            Utente prova = new Utente(myId, myNome, myCognome, myEmail, myPassword, myIsAdmin); //Creo l'utene, ma prima dovremmo fare oppurtuni controlli nel database e poi TRY & CATCH 
+
+            if (prova != null)
+                return true;
+            else
+                return false;
+        }
+
+
     }
 }

@@ -14,3 +14,6 @@ C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\WCFSer
 C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\WCFServer\obj\Debug\WCFServer.exe
 C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\WCFServer\obj\Debug\WCFServer.pdb
 C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\WCFServer\bin\Debug\WCFServer.pdb
+C:\Users\Locas\Desktop\cineteca\WCFServer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Locas\Desktop\cineteca\WCFServer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Locas\Desktop\cineteca\WCFServer\obj\Debug\WCFServer.csproj.CopyComplete
