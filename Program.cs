@@ -7,7 +7,7 @@ using cineteca.ServiceReference; // includo servizi di referenza
 
 namespace cineteca
 {
-    static class Program
+    class Program
     {
         /// <summary>
         /// The main entry point for the application.
@@ -17,7 +17,8 @@ namespace cineteca
         {
             //PROVO CLASSE APPENA CREATA
             var wcfclient = new ServiceReference.ServerServicesClient();  //Istanzio un client con le referenze ai servzi offerti dal server
-            bool prova = wcfclient.NuovoUtente(5, "Prova", "Prova", "Prova", "Prova", "Prova");
+            bool prova = wcfclient.NuovoUtente(5, "Prova", "Prova", "Prova", "Prova", true);
+            
             
             Console.WriteLine(prova);
             Console.ReadLine();

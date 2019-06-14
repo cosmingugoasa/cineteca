@@ -20,7 +20,7 @@
         <xs:element minOccurs="0" name="myCognome" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="myEmail" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="myPassword" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="myIsAdmin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="myIsAdmin" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

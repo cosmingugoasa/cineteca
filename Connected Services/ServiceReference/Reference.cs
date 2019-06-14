@@ -22,10 +22,10 @@ namespace cineteca.ServiceReference {
         System.Threading.Tasks.Task<bool> DoWorkAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/NuovoUtente", ReplyAction="http://tempuri.org/IServerServices/NuovoUtenteResponse")]
-        bool NuovoUtente(int myId, string myNome, string myCognome, string myEmail, string myPassword, string myIsAdmin);
+        bool NuovoUtente(int myId, string myNome, string myCognome, string myEmail, string myPassword, bool myIsAdmin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/NuovoUtente", ReplyAction="http://tempuri.org/IServerServices/NuovoUtenteResponse")]
-        System.Threading.Tasks.Task<bool> NuovoUtenteAsync(int myId, string myNome, string myCognome, string myEmail, string myPassword, string myIsAdmin);
+        System.Threading.Tasks.Task<bool> NuovoUtenteAsync(int myId, string myNome, string myCognome, string myEmail, string myPassword, bool myIsAdmin);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -63,11 +63,11 @@ namespace cineteca.ServiceReference {
             return base.Channel.DoWorkAsync();
         }
         
-        public bool NuovoUtente(int myId, string myNome, string myCognome, string myEmail, string myPassword, string myIsAdmin) {
+        public bool NuovoUtente(int myId, string myNome, string myCognome, string myEmail, string myPassword, bool myIsAdmin) {
             return base.Channel.NuovoUtente(myId, myNome, myCognome, myEmail, myPassword, myIsAdmin);
         }
         
-        public System.Threading.Tasks.Task<bool> NuovoUtenteAsync(int myId, string myNome, string myCognome, string myEmail, string myPassword, string myIsAdmin) {
+        public System.Threading.Tasks.Task<bool> NuovoUtenteAsync(int myId, string myNome, string myCognome, string myEmail, string myPassword, bool myIsAdmin) {
             return base.Channel.NuovoUtenteAsync(myId, myNome, myCognome, myEmail, myPassword, myIsAdmin);
         }
     }

@@ -6,94 +6,95 @@ using System.Threading.Tasks;
 
 namespace WCFServer
 {
-    class Utente
+    
+    public class Utente
     {
-        private int Id;
-        private String Nome;
-        private String Cognome;
-        private String Email;
-        private String Password;
-        private String IsAdmin;
+        private int id;
+        private String nome;
+        private String cognome;
+        private String email;
+        private String password;
+        private bool isAdmin;
 
         public Utente() { }
 
-        public Utente(int myId, string myNome, string myCognome, string myEmail, string myPassword, string myIsAdmin)
+        public Utente(int myId, string myNome, string myCognome, string myEmail, string myPassword, bool myIsAdmin)
         {
-            Id = myId;
-            Nome = myNome;
-            Cognome = myCognome;
-            Email = myEmail;
-            Password = myPassword;
-            IsAdmin = myIsAdmin;
+            id = myId;
+            nome = myNome;
+            cognome = myCognome;
+            email = myEmail;
+            password = myPassword;
+            isAdmin = myIsAdmin;
         }
 
-        public string nome
+        public int Id
         {
             get
             {
-                return this.Nome;
+                return this.id;
             }
             set
             {
-                this.Nome = value;
-            }
-        }
-
-        public int id
-        {
-            get
-            {
-                return this.Id;
-            }
-            set
-            {
-                this.Id = value;
+                this.id = value;
             }
         }
 
-        public string cognome
+        public string Nome
         {
             get
             {
-                return this.Cognome;
+                return this.nome;
             }
             set
             {
-                this.Cognome = value;
+                this.nome = value;
             }
         }
 
-        public string email
+        public string Cognome
         {
             get
             {
-                return this.Email;
+                return this.cognome;
             }
             set
             {
-                this.Email = value;
+                this.cognome = value;
             }
         }
-        public string password
+
+        public string Email
         {
             get
             {
-                return this.Password;
+                return this.email;
             }
             set
             {
-                this.Password = value;
+                this.email = value;
             }
         }
-        public string isAdmin
+        public string Password
         {
             get
             {
-                return this.IsAdmin;
+                return this.password;
             }
             set
             {
-                this.IsAdmin = value;
+                this.password = value;
+            }
+        }
+        public bool IsAdmin
+        {
+            get
+            {
+                return this.isAdmin;
+            }
+            set
+            {
+                this.isAdmin = value;
             }
         }
 

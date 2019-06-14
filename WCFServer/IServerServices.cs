@@ -15,6 +15,6 @@ namespace WCFServer
         bool DoWork();
 
         [OperationContract]
-        bool NuovoUtente(int myId, string myNome, string myCognome, string myEmail, string myPassword, string myIsAdmin);
+        bool NuovoUtente(int myId, string myNome, string myCognome, string myEmail, string myPassword, bool myIsAdmin);
     }
 }
