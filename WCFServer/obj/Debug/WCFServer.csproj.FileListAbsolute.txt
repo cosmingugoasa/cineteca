@@ -27,3 +27,13 @@ C:\Users\Mattia\Desktop\cineteca\WCFServer\obj\Debug\WCFServer.csproj.CoreCompil
 C:\Users\Mattia\Desktop\cineteca\WCFServer\obj\Debug\WCFServer.csproj.CopyComplete
 C:\Users\Mattia\Desktop\cineteca\WCFServer\obj\Debug\WCFServer.exe
 C:\Users\Mattia\Desktop\cineteca\WCFServer\obj\Debug\WCFServer.pdb
+C:\Users\Dax\Documents\Uni\Tecnologie Programmazione Industriale\Programmi\cineteca\WCFServer\bin\Debug\WCFServer.exe.config
+C:\Users\Dax\Documents\Uni\Tecnologie Programmazione Industriale\Programmi\cineteca\WCFServer\bin\Debug\WCFServer.exe
+C:\Users\Dax\Documents\Uni\Tecnologie Programmazione Industriale\Programmi\cineteca\WCFServer\bin\Debug\WCFServer.pdb
+C:\Users\Dax\Documents\Uni\Tecnologie Programmazione Industriale\Programmi\cineteca\WCFServer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Dax\Documents\Uni\Tecnologie Programmazione Industriale\Programmi\cineteca\WCFServer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Dax\Documents\Uni\Tecnologie Programmazione Industriale\Programmi\cineteca\WCFServer\obj\Debug\WCFServer.csprojAssemblyReference.cache
+C:\Users\Dax\Documents\Uni\Tecnologie Programmazione Industriale\Programmi\cineteca\WCFServer\obj\Debug\WCFServer.csproj.CoreCompileInputs.cache
+C:\Users\Dax\Documents\Uni\Tecnologie Programmazione Industriale\Programmi\cineteca\WCFServer\obj\Debug\WCFServer.csproj.CopyComplete
+C:\Users\Dax\Documents\Uni\Tecnologie Programmazione Industriale\Programmi\cineteca\WCFServer\obj\Debug\WCFServer.exe
+C:\Users\Dax\Documents\Uni\Tecnologie Programmazione Industriale\Programmi\cineteca\WCFServer\obj\Debug\WCFServer.pdb

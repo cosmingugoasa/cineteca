@@ -34,5 +34,10 @@ namespace cineteca
             regForm.Show();     //switch tra form di login e form di register
             this.Hide();        //nascondo un form e visualizza l'altro
         }
+
+        private void btn_login_Click(object sender, EventArgs e)
+        {
+            l_status.Text = wcfClient.GetNomeUtente();      //test classe Utente
+        }
     }
 }

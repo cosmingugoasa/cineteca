@@ -25,6 +25,12 @@ namespace WCFServer
                 return false;
         }
 
+        public String GetNomeUtente()
+        {
+            Utente utente_prova = new Utente("cosmin");
+            return utente_prova.GetNome();
+        }
+
 
     }
 }
