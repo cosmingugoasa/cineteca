@@ -40,6 +40,7 @@
             this.btn_login_redirect = new System.Windows.Forms.Button();
             this.btn_status = new System.Windows.Forms.Button();
             this.l_status = new System.Windows.Forms.Label();
+            this.l_operation_status = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // l_name
@@ -152,6 +153,7 @@
             this.btn_register.TabIndex = 12;
             this.btn_register.Text = "Register";
             this.btn_register.UseVisualStyleBackColor = true;
+            this.btn_register.Click += new System.EventHandler(this.btn_register_Click);
             // 
             // l_redirect
             // 
@@ -190,12 +192,24 @@
             this.l_status.TabIndex = 15;
             this.l_status.Text = "status : ";
             // 
+            // l_operation_status
+            // 
+            this.l_operation_status.AutoSize = true;
+            this.l_operation_status.ForeColor = System.Drawing.Color.DarkRed;
+            this.l_operation_status.Location = new System.Drawing.Point(288, 192);
+            this.l_operation_status.Name = "l_operation_status";
+            this.l_operation_status.Size = new System.Drawing.Size(16, 13);
+            this.l_operation_status.TabIndex = 17;
+            this.l_operation_status.Text = "...";
+            this.l_operation_status.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.ClientSize = new System.Drawing.Size(686, 211);
+            this.Controls.Add(this.l_operation_status);
             this.Controls.Add(this.btn_status);
             this.Controls.Add(this.l_status);
             this.Controls.Add(this.btn_login_redirect);
@@ -239,5 +253,6 @@
         private System.Windows.Forms.Button btn_login_redirect;
         private System.Windows.Forms.Button btn_status;
         private System.Windows.Forms.Label l_status;
+        private System.Windows.Forms.Label l_operation_status;
     }
 }

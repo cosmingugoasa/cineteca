@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;//Liberia per fornire un Host di Servizi
+using System.Data;
+using MySql.Data.MySqlClient;
+using System.Configuration;
 
 namespace WCFServer
 {
@@ -18,6 +21,7 @@ namespace WCFServer
 
                 Console.WriteLine("Server Attivo.\nPremere invio per interrompere...");
                 Console.ReadLine();
+                
                 svcHost.Close();
                 Console.WriteLine("Server Interrotto.");
 

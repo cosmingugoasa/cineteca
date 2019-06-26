@@ -1,5 +1,9 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -31,6 +35,32 @@ namespace WCFServer
             return utente_prova.GetNome();
         }
 
+        public bool RegisterUser(string email, string passw, string nome, string cognome, bool isAdmin)
+        {
+            MySqlConnection conn = new MySqlConnection("Server=mysql-loca.alwaysdata.net;Database=loca_cineteca;Uid=loca;Pwd=prova98;");
+            conn.Open();
 
+            if (conn.State == ConnectionState.Open)
+            {
+                Console.WriteLine("Connessione DB aperta\n");
+            }
+            else
+            {
+                Console.WriteLine("Connessione DB fallita\n");
+            }
+
+            try
+            {
+                string cmd_string = "INSERT INTO UTENTE (Email, Passw, Nome, Cognome, IsAdmin) VALUES ('" + email + "', '"+passw+"', '"+nome+"', '"+cognome+"', '"+isAdmin+"')";
+                MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+        }        
     }
 }

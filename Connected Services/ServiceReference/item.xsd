@@ -24,4 +24,22 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RegisterUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passw" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nome" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cognome" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isAdmin" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegisterUserResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
