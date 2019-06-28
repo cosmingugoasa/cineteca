@@ -4,6 +4,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WCFServer/ServerServices/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WCFServer/ServerServices/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WCFServer/ServerServices/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFServer" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IServerServices_DoWork_InputMessage">
@@ -30,6 +31,12 @@
   <wsdl:message name="IServerServices_LoginUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoginUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IServerServices_FilmsList_InputMessage">
+    <wsdl:part name="parameters" element="tns:FilmsList" />
+  </wsdl:message>
+  <wsdl:message name="IServerServices_FilmsList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FilmsListResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServerServices">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/DoWork" message="tns:IServerServices_DoWork_InputMessage" />
@@ -46,6 +53,10 @@
     <wsdl:operation name="LoginUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/LoginUser" message="tns:IServerServices_LoginUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/LoginUserResponse" message="tns:IServerServices_LoginUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FilmsList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/FilmsList" message="tns:IServerServices_FilmsList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/FilmsListResponse" message="tns:IServerServices_FilmsList_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServerServices" type="tns:IServerServices">
@@ -79,6 +90,15 @@
     </wsdl:operation>
     <wsdl:operation name="LoginUser">
       <soap:operation soapAction="http://tempuri.org/IServerServices/LoginUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FilmsList">
+      <soap:operation soapAction="http://tempuri.org/IServerServices/FilmsList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

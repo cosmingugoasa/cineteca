@@ -91,5 +91,31 @@ namespace WCFServer
                 return false;
             }
         }
+
+        public List<Film> FilmsList()
+        {
+            MySqlConnection conn = new MySqlConnection("Server=mysql-loca.alwaysdata.net;Database=loca_cineteca;Uid=loca;Pwd=prova98;");
+            conn.Open();
+
+            List<Film> films = new List<Film>();
+
+            try
+            {  
+                string query = "SELECT * FROM FILM";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Film film = new Film(reader.GetString(1), reader.GetString(2), Convert.ToBoolean(reader.GetString(3)), reader.GetString(4));
+                    //Console.WriteLine(reader.GetString(1) + " " + reader.GetString(2) + " " + reader.GetString(3) + " " + reader.GetString(4));
+                }
+                return films;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return films;
+            }
+        }
     }
 }

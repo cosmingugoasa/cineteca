@@ -46,8 +46,6 @@ namespace cineteca
             {
                 OperationStatus.Text = "Username or Password are incorrect";
             }
-            
-            
         }
     }
 }

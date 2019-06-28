@@ -1,4 +1,5 @@
-﻿using System;
+﻿using cineteca.ServiceReference;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +13,15 @@ namespace cineteca
 {
     public partial class Home : Form
     {
+        ServerServicesClient wcfClient = new ServerServicesClient();
+
         public Home()
         {
             InitializeComponent();
+            wcfClient.FilmsList();
         }
 
         
+
     }
 }

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
-using System.Text;
 
 namespace WCFServer
 {
@@ -25,6 +21,9 @@ namespace WCFServer
 
         [OperationContract]
         bool LoginUser(string email, string passw);
+
+        [OperationContract]
+        List<Film> FilmsList();
 
     }
 }

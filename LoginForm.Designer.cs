@@ -125,6 +125,7 @@
             // OperationStatus
             // 
             this.OperationStatus.AutoSize = true;
+            this.OperationStatus.ForeColor = System.Drawing.Color.DarkRed;
             this.OperationStatus.Location = new System.Drawing.Point(194, 161);
             this.OperationStatus.Name = "OperationStatus";
             this.OperationStatus.Size = new System.Drawing.Size(0, 13);
@@ -147,7 +148,7 @@
             this.Controls.Add(this.tb_password_login);
             this.Controls.Add(this.tb_email_login);
             this.Name = "LoginForm";
-            this.Text = "Login LoginForm";
+            this.Text = "Login Form";
             this.ResumeLayout(false);
             this.PerformLayout();
 

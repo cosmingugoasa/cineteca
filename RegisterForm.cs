@@ -13,7 +13,7 @@ namespace cineteca
 {
     public partial class RegisterForm : Form
     {
-        ServerServicesClient wcfClient = new ServiceReference.ServerServicesClient();       //creo istanza del client
+        ServerServicesClient wcfClient = new ServerServicesClient();       //creo istanza del client
 
         public RegisterForm()
         {
