@@ -61,6 +61,35 @@ namespace WCFServer
                 Console.WriteLine(ex.ToString());
                 return false;
             }
-        }        
+        }
+
+
+        public bool LoginUser(string email, string passw)
+        {
+            MySqlConnection conn = new MySqlConnection("Server=mysql-loca.alwaysdata.net;Database=loca_cineteca;Uid=loca;Pwd=prova98;");
+            conn.Open();
+
+            if (conn.State == ConnectionState.Open)
+            {
+                Console.WriteLine("Connessione DB aperta\n");
+            }
+            else
+            {
+                Console.WriteLine("Connessione DB fallita\n");
+            }
+
+            try
+            {   //Cerco sul DB se credenziali corrette
+                string Login_string = "SELECT * FROM UTENTE Where Email = '" + email + "' AND Passw = '" + passw +"'";
+                MySqlCommand cmd = new MySqlCommand(Login_string, conn);
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+        }
     }
 }

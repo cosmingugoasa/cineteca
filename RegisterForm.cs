@@ -37,20 +37,24 @@ namespace cineteca
 
         private void btn_register_Click(object sender, EventArgs e)
         {
-            int root = 0;                                       //Variabile se Utente ROOT
-            if (tb_register_admin_code.Text == "root")          //Controllo TextBox
-                root = 1;
-
-            //Chiamata al servizio per registrazione Utente
-            if (wcfClient.RegisterUser(tb_register_email.Text, tb_register_password.Text, tb_register_name.Text, tb_register_surname.Text, root))
+            if (tb_register_password.Text.Equals(tb_register_repeat_password.Text))
             {
-                l_operation_status.Text = "User admin added";
+                int root = 0;                                       //Variabile se Utente ROOT
+                if (tb_register_admin_code.Text == "root")          //Controllo TextBox
+                    root = 1;
+
+                //Chiamata al servizio per registrazione Utente
+                if (wcfClient.RegisterUser(tb_register_email.Text, tb_register_password.Text, tb_register_name.Text, tb_register_surname.Text, root))
+                {
+                    l_operation_status.Text = "User admin added";
+                }
+                else
+                {
+                    l_operation_status.Text = "Email Already Exist";
+                }
             }
             else
-            {
-                l_operation_status.Text = "Query failed";
-            }
-
+                l_operation_status.Text = "Password don't match";
         }
     }
 }

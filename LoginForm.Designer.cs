@@ -37,6 +37,7 @@
             this.btn_status = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.OperationStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tb_email_login
@@ -121,12 +122,21 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Password";
             // 
+            // OperationStatus
+            // 
+            this.OperationStatus.AutoSize = true;
+            this.OperationStatus.Location = new System.Drawing.Point(194, 161);
+            this.OperationStatus.Name = "OperationStatus";
+            this.OperationStatus.Size = new System.Drawing.Size(0, 13);
+            this.OperationStatus.TabIndex = 9;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.ClientSize = new System.Drawing.Size(484, 211);
+            this.Controls.Add(this.OperationStatus);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_status);
@@ -154,6 +164,7 @@
         private System.Windows.Forms.Button btn_status;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label OperationStatus;
     }
 }
 

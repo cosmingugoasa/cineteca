@@ -23,5 +23,8 @@ namespace WCFServer
         [OperationContract]
         bool RegisterUser(string email, string passw, string nome, string cognome, int isAdmin);
 
+        [OperationContract]
+        bool LoginUser(string email, string passw);
+
     }
 }

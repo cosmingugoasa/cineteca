@@ -24,6 +24,12 @@
   <wsdl:message name="IServerServices_RegisterUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegisterUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IServerServices_LoginUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoginUser" />
+  </wsdl:message>
+  <wsdl:message name="IServerServices_LoginUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServerServices">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/DoWork" message="tns:IServerServices_DoWork_InputMessage" />
@@ -36,6 +42,10 @@
     <wsdl:operation name="RegisterUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/RegisterUser" message="tns:IServerServices_RegisterUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/RegisterUserResponse" message="tns:IServerServices_RegisterUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/LoginUser" message="tns:IServerServices_LoginUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/LoginUserResponse" message="tns:IServerServices_LoginUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServerServices" type="tns:IServerServices">
@@ -60,6 +70,15 @@
     </wsdl:operation>
     <wsdl:operation name="RegisterUser">
       <soap:operation soapAction="http://tempuri.org/IServerServices/RegisterUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginUser">
+      <soap:operation soapAction="http://tempuri.org/IServerServices/LoginUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

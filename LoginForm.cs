@@ -1,4 +1,5 @@
 ﻿using cineteca.ServiceReference;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,7 +38,16 @@ namespace cineteca
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            l_status.Text = wcfClient.GetNomeUtente();      //test classe Utente
+            if (wcfClient.LoginUser(tb_email_login.Text,tb_password_login.Text))
+            {
+                OperationStatus.Text = "Login completed";
+            }
+            else
+            {
+                OperationStatus.Text = "Username or Password are incorrect";
+            }
+            
+            
         }
     }
 }
