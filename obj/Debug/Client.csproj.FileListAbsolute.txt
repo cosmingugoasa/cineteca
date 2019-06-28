@@ -54,3 +54,4 @@ C:\Users\Dax\Documents\Uni\Tecnologie Programmazione Industriale\Programmi\cinet
 C:\Users\Dax\Documents\Uni\Tecnologie Programmazione Industriale\Programmi\cineteca\obj\Debug\Client.csproj.CopyComplete
 C:\Users\Dax\Documents\Uni\Tecnologie Programmazione Industriale\Programmi\cineteca\obj\Debug\cineteca.exe
 C:\Users\Dax\Documents\Uni\Tecnologie Programmazione Industriale\Programmi\cineteca\obj\Debug\cineteca.pdb
+C:\Users\Mattia\Desktop\cineteca\obj\Debug\cineteca.Home.resources
