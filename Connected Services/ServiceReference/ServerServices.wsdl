@@ -4,6 +4,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WCFServer/ServerServices/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WCFServer/ServerServices/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8733/Design_Time_Addresses/WCFServer/ServerServices/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFServer" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IServerServices_DoWork_InputMessage">
@@ -24,6 +25,12 @@
   <wsdl:message name="IServerServices_RegisterUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegisterUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IServerServices_GetFilmsList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilmsList" />
+  </wsdl:message>
+  <wsdl:message name="IServerServices_GetFilmsList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilmsListResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServerServices">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/DoWork" message="tns:IServerServices_DoWork_InputMessage" />
@@ -36,6 +43,10 @@
     <wsdl:operation name="RegisterUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/RegisterUser" message="tns:IServerServices_RegisterUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/RegisterUserResponse" message="tns:IServerServices_RegisterUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilmsList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/GetFilmsList" message="tns:IServerServices_GetFilmsList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/GetFilmsListResponse" message="tns:IServerServices_GetFilmsList_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServerServices" type="tns:IServerServices">
@@ -60,6 +71,15 @@
     </wsdl:operation>
     <wsdl:operation name="RegisterUser">
       <soap:operation soapAction="http://tempuri.org/IServerServices/RegisterUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilmsList">
+      <soap:operation soapAction="http://tempuri.org/IServerServices/GetFilmsList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

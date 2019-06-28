@@ -40,15 +40,6 @@ namespace WCFServer
             MySqlConnection conn = new MySqlConnection("Server=mysql-loca.alwaysdata.net;Database=loca_cineteca;Uid=loca;Pwd=prova98;");
             conn.Open();
 
-            if (conn.State == ConnectionState.Open)
-            {
-                Console.WriteLine("Connessione DB aperta\n");
-            }
-            else
-            {
-                Console.WriteLine("Connessione DB fallita\n");
-            }
-
             try
             {
                 string cmd_string = "INSERT INTO UTENTE (Email, Passw, Nome, Cognome, IsAdmin) VALUES ('" + email + "', '"+passw+"', '"+nome+"', '"+cognome+"', '"+isAdmin+"')";
@@ -58,9 +49,40 @@ namespace WCFServer
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex);
                 return false;
             }
-        }        
+        }
+
+        public List<Film> GetFilmsList()
+        {
+            List<Film> films_list = new List<Film>();
+            MySqlConnection conn = new MySqlConnection("Server=mysql-loca.alwaysdata.net;Database=loca_cineteca;Uid=loca;Pwd=prova98;");
+            conn.Open();
+
+            string cmd_string = "SELECT * FROM FILM";
+            MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
+            MySqlDataReader reader; reader = cmd.ExecuteReader();
+
+            try
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine(reader.GetString(0));
+                }
+                return films_list;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return films_list;
+            }
+            finally
+            {
+                reader.Close();
+                conn.Close();
+            }
+        }
     }
 }

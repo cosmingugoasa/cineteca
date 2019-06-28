@@ -94,10 +94,16 @@
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Connected Services\ServiceReference\cineteca.ServiceReference.Film.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference\item.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference\item2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference\ServerServices.wsdl" />

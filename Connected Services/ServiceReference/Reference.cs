@@ -9,7 +9,38 @@
 //------------------------------------------------------------------------------
 
 namespace cineteca.ServiceReference {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Film", Namespace="http://schemas.datacontract.org/2004/07/WCFServer")]
+    [System.SerializableAttribute()]
+    public partial class Film : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IServerServices")]
@@ -32,6 +63,12 @@ namespace cineteca.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/RegisterUser", ReplyAction="http://tempuri.org/IServerServices/RegisterUserResponse")]
         System.Threading.Tasks.Task<bool> RegisterUserAsync(string email, string passw, string nome, string cognome, int isAdmin);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/GetFilmsList", ReplyAction="http://tempuri.org/IServerServices/GetFilmsListResponse")]
+        cineteca.ServiceReference.Film[] GetFilmsList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/GetFilmsList", ReplyAction="http://tempuri.org/IServerServices/GetFilmsListResponse")]
+        System.Threading.Tasks.Task<cineteca.ServiceReference.Film[]> GetFilmsListAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,6 +120,14 @@ namespace cineteca.ServiceReference {
         
         public System.Threading.Tasks.Task<bool> RegisterUserAsync(string email, string passw, string nome, string cognome, int isAdmin) {
             return base.Channel.RegisterUserAsync(email, passw, nome, cognome, isAdmin);
+        }
+        
+        public cineteca.ServiceReference.Film[] GetFilmsList() {
+            return base.Channel.GetFilmsList();
+        }
+        
+        public System.Threading.Tasks.Task<cineteca.ServiceReference.Film[]> GetFilmsListAsync() {
+            return base.Channel.GetFilmsListAsync();
         }
     }
 }
