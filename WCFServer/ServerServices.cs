@@ -35,7 +35,7 @@ namespace WCFServer
             return utente_prova.GetNome();
         }
 
-        public bool RegisterUser(string email, string passw, string nome, string cognome, bool isAdmin)
+        public bool RegisterUser(string email, string passw, string nome, string cognome, int isAdmin)
         {
             MySqlConnection conn = new MySqlConnection("Server=mysql-loca.alwaysdata.net;Database=loca_cineteca;Uid=loca;Pwd=prova98;");
             conn.Open();

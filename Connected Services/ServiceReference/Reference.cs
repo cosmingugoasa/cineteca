@@ -28,10 +28,10 @@ namespace cineteca.ServiceReference {
         System.Threading.Tasks.Task<string> GetNomeUtenteAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/RegisterUser", ReplyAction="http://tempuri.org/IServerServices/RegisterUserResponse")]
-        bool RegisterUser(string email, string passw, string nome, string cognome, bool isAdmin);
+        bool RegisterUser(string email, string passw, string nome, string cognome, int isAdmin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/RegisterUser", ReplyAction="http://tempuri.org/IServerServices/RegisterUserResponse")]
-        System.Threading.Tasks.Task<bool> RegisterUserAsync(string email, string passw, string nome, string cognome, bool isAdmin);
+        System.Threading.Tasks.Task<bool> RegisterUserAsync(string email, string passw, string nome, string cognome, int isAdmin);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -77,11 +77,11 @@ namespace cineteca.ServiceReference {
             return base.Channel.GetNomeUtenteAsync();
         }
         
-        public bool RegisterUser(string email, string passw, string nome, string cognome, bool isAdmin) {
+        public bool RegisterUser(string email, string passw, string nome, string cognome, int isAdmin) {
             return base.Channel.RegisterUser(email, passw, nome, cognome, isAdmin);
         }
         
-        public System.Threading.Tasks.Task<bool> RegisterUserAsync(string email, string passw, string nome, string cognome, bool isAdmin) {
+        public System.Threading.Tasks.Task<bool> RegisterUserAsync(string email, string passw, string nome, string cognome, int isAdmin) {
             return base.Channel.RegisterUserAsync(email, passw, nome, cognome, isAdmin);
         }
     }

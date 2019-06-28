@@ -117,6 +117,7 @@
             this.tb_register_repeat_password.Name = "tb_register_repeat_password";
             this.tb_register_repeat_password.Size = new System.Drawing.Size(100, 20);
             this.tb_register_repeat_password.TabIndex = 9;
+            this.tb_register_repeat_password.UseSystemPasswordChar = true;
             // 
             // label3
             // 
@@ -135,6 +136,7 @@
             this.tb_register_password.Name = "tb_register_password";
             this.tb_register_password.Size = new System.Drawing.Size(100, 20);
             this.tb_register_password.TabIndex = 7;
+            this.tb_register_password.UseSystemPasswordChar = true;
             // 
             // label4
             // 
@@ -196,7 +198,7 @@
             // 
             this.l_operation_status.AutoSize = true;
             this.l_operation_status.ForeColor = System.Drawing.Color.DarkRed;
-            this.l_operation_status.Location = new System.Drawing.Point(288, 192);
+            this.l_operation_status.Location = new System.Drawing.Point(303, 191);
             this.l_operation_status.Name = "l_operation_status";
             this.l_operation_status.Size = new System.Drawing.Size(16, 13);
             this.l_operation_status.TabIndex = 17;

@@ -35,30 +35,30 @@
             this.btn_register_redirect = new System.Windows.Forms.Button();
             this.l_status = new System.Windows.Forms.Label();
             this.btn_status = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tb_email_login
             // 
-            this.tb_email_login.Location = new System.Drawing.Point(115, 21);
+            this.tb_email_login.Location = new System.Drawing.Point(153, 21);
             this.tb_email_login.Name = "tb_email_login";
-            this.tb_email_login.Size = new System.Drawing.Size(248, 20);
+            this.tb_email_login.Size = new System.Drawing.Size(210, 20);
             this.tb_email_login.TabIndex = 0;
-            this.tb_email_login.Text = "email ";
             this.tb_email_login.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tb_password_login
             // 
-            this.tb_password_login.Location = new System.Drawing.Point(115, 60);
+            this.tb_password_login.Location = new System.Drawing.Point(153, 61);
             this.tb_password_login.Name = "tb_password_login";
-            this.tb_password_login.Size = new System.Drawing.Size(248, 20);
+            this.tb_password_login.Size = new System.Drawing.Size(210, 20);
             this.tb_password_login.TabIndex = 1;
-            this.tb_password_login.Text = "password ";
             this.tb_password_login.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_password_login.UseSystemPasswordChar = true;
             // 
             // btn_login
             // 
-            this.btn_login.Location = new System.Drawing.Point(183, 115);
+            this.btn_login.Location = new System.Drawing.Point(199, 110);
             this.btn_login.Name = "btn_login";
             this.btn_login.Size = new System.Drawing.Size(103, 38);
             this.btn_login.TabIndex = 2;
@@ -103,12 +103,32 @@
             this.btn_status.TabIndex = 6;
             this.btn_status.UseVisualStyleBackColor = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(103, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "E-mail";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(94, 64);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Password";
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.ClientSize = new System.Drawing.Size(484, 211);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_status);
             this.Controls.Add(this.l_status);
             this.Controls.Add(this.btn_register_redirect);
@@ -132,6 +152,8 @@
         private System.Windows.Forms.Button btn_register_redirect;
         private System.Windows.Forms.Label l_status;
         private System.Windows.Forms.Button btn_status;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

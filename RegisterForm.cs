@@ -39,7 +39,7 @@ namespace cineteca
         {
             if (tb_register_admin_code.Text == "root")
             {
-                if (wcfClient.RegisterUser(tb_register_email.Text, tb_register_password.Text, tb_register_name.Text, tb_register_surname.Text, true)){
+                if (wcfClient.RegisterUser(tb_register_email.Text, tb_register_password.Text, tb_register_name.Text, tb_register_surname.Text, 1)){
                     l_operation_status.Text = "User admin added";
                 }
                 else
@@ -49,7 +49,7 @@ namespace cineteca
             }
             else
             {
-                if(wcfClient.RegisterUser(tb_register_email.Text, tb_register_password.Text, tb_register_name.Text, tb_register_surname.Text, false))
+                if(wcfClient.RegisterUser(tb_register_email.Text, tb_register_password.Text, tb_register_name.Text, tb_register_surname.Text, 0))
                 {
                     l_operation_status.Text = "User added";
                 }
