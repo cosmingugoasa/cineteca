@@ -37,6 +37,7 @@
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.store_panel = new System.Windows.Forms.FlowLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
+            this.PassEmail = new System.Windows.Forms.Label();
             this.toolStripMenu.SuspendLayout();
             this.store_panel.SuspendLayout();
             this.SuspendLayout();
@@ -89,7 +90,7 @@
             // btn_logout
             // 
             this.btn_logout.Name = "btn_logout";
-            this.btn_logout.Size = new System.Drawing.Size(112, 22);
+            this.btn_logout.Size = new System.Drawing.Size(180, 22);
             this.btn_logout.Text = "Logout";
             // 
             // toolStripDropDownButton1
@@ -122,12 +123,21 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // PassEmail
+            // 
+            this.PassEmail.AutoSize = true;
+            this.PassEmail.Location = new System.Drawing.Point(636, 9);
+            this.PassEmail.Name = "PassEmail";
+            this.PassEmail.Size = new System.Drawing.Size(0, 13);
+            this.PassEmail.TabIndex = 4;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(777, 425);
             this.Controls.Add(this.store_panel);
+            this.Controls.Add(this.PassEmail);
             this.Controls.Add(this.toolStripMenu);
             this.Name = "Home";
             this.Text = "Home";
@@ -149,5 +159,6 @@
         private System.Windows.Forms.ToolStripMenuItem btn_logout;
         private System.Windows.Forms.FlowLayoutPanel store_panel;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label PassEmail;
     }
 }

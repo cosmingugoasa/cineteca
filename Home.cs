@@ -15,9 +15,10 @@ namespace cineteca
     {
         ServerServicesClient wcfClient = new ServerServicesClient();
 
-        public Home()
-        {
+        public Home(Utente myUtente)
+        {          
             InitializeComponent();
+            PassEmail.Text = myUtente.email;
             List<Film> films = new List<Film>();
             films = wcfClient.FilmsList().ToList();
 
