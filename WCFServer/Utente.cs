@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,18 +11,24 @@ namespace WCFServer
     [DataContract]
     public class Utente
     {
-        private int id;
-        private String nome;
-        private String cognome;
-        private String email;
-        private String password;
-        private bool isAdmin;
+        [DataMember]
+        private int id { get; set; }
+        [DataMember]
+        private String nome { get; set; }
+        [DataMember]
+        private String cognome { get; set; }
+        [DataMember]
+        private String email { get; set; }
+        [DataMember]
+        private String password { get; set; }
+        [DataMember]
+        private bool isAdmin { get; set; }
 
-        public Utente(string myNome) {
-            nome = myNome;
+        public Utente() {
+   
         }
 
-        public Utente(int myId, string myNome, string myCognome, string myEmail, string myPassword, bool myIsAdmin)
+        public Utente(int myId, string myEmail, string myPassword, string myNome, string myCognome, bool myIsAdmin)
         {
             id = myId;
             nome = myNome;
@@ -34,6 +41,12 @@ namespace WCFServer
         public string GetNome()
         {
             return nome;
+        }
+
+  
+        public string GetEmail()
+        {
+            return email;
         }
     }
 }

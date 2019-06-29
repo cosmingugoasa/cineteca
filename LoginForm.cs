@@ -37,9 +37,11 @@ namespace cineteca
         }
 
         private void btn_login_Click(object sender, EventArgs e)
-        {
-            if (wcfClient.LoginUser(tb_email_login.Text,tb_password_login.Text))
+        {   
+
+            if (wcfClient.LoginUser(tb_email_login.Text,tb_password_login.Text))//controllo se credenziali corrette
             {
+                Utente myUtente = wcfClient.GetUser(tb_email_login.Text);//Oggetto utente con credenziali
                 OperationStatus.Text = "Login completed";
             }
             else
