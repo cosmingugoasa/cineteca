@@ -10,12 +10,6 @@ namespace WCFServer
         [OperationContract]
         bool DoWork();
 
-        /*[OperationContract]
-        bool NuovoUtente(int myId, string myNome, string myCognome, string myEmail, string myPassword, bool myIsAdmin);*/
-
-        [OperationContract]
-        string GetNomeUtente();
-
         [OperationContract]
         bool RegisterUser(string email, string passw, string nome, string cognome, int isAdmin);
 
@@ -25,5 +19,7 @@ namespace WCFServer
         [OperationContract]
         List<Film> FilmsList();
 
+        [OperationContract]
+        Utente GetUser(string email);
     }
 }

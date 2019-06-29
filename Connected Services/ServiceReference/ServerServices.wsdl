@@ -13,12 +13,6 @@
   <wsdl:message name="IServerServices_DoWork_OutputMessage">
     <wsdl:part name="parameters" element="tns:DoWorkResponse" />
   </wsdl:message>
-  <wsdl:message name="IServerServices_GetNomeUtente_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetNomeUtente" />
-  </wsdl:message>
-  <wsdl:message name="IServerServices_GetNomeUtente_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetNomeUtenteResponse" />
-  </wsdl:message>
   <wsdl:message name="IServerServices_RegisterUser_InputMessage">
     <wsdl:part name="parameters" element="tns:RegisterUser" />
   </wsdl:message>
@@ -37,14 +31,16 @@
   <wsdl:message name="IServerServices_FilmsList_OutputMessage">
     <wsdl:part name="parameters" element="tns:FilmsListResponse" />
   </wsdl:message>
+  <wsdl:message name="IServerServices_GetUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="IServerServices_GetUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServerServices">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/DoWork" message="tns:IServerServices_DoWork_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/DoWorkResponse" message="tns:IServerServices_DoWork_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetNomeUtente">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/GetNomeUtente" message="tns:IServerServices_GetNomeUtente_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/GetNomeUtenteResponse" message="tns:IServerServices_GetNomeUtente_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RegisterUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/RegisterUser" message="tns:IServerServices_RegisterUser_InputMessage" />
@@ -58,20 +54,15 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/FilmsList" message="tns:IServerServices_FilmsList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/FilmsListResponse" message="tns:IServerServices_FilmsList_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/GetUser" message="tns:IServerServices_GetUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/GetUserResponse" message="tns:IServerServices_GetUser_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServerServices" type="tns:IServerServices">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="DoWork">
       <soap:operation soapAction="http://tempuri.org/IServerServices/DoWork" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetNomeUtente">
-      <soap:operation soapAction="http://tempuri.org/IServerServices/GetNomeUtente" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -99,6 +90,15 @@
     </wsdl:operation>
     <wsdl:operation name="FilmsList">
       <soap:operation soapAction="http://tempuri.org/IServerServices/FilmsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://tempuri.org/IServerServices/GetUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -98,6 +98,9 @@
     <None Include="Connected Services\ServiceReference\cineteca.ServiceReference.Film1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference\cineteca.ServiceReference.Utente.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference\item.xsd">
       <SubType>Designer</SubType>
     </None>

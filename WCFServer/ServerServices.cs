@@ -14,30 +14,43 @@ namespace WCFServer
     // NOTA: è possibile utilizzare il comando "Rinomina" del menu "Refactoring" per modificare il nome di classe "ServerServices" nel codice e nel file di configurazione contemporaneamente.
     public class ServerServices : IServerServices
     {
+        MySqlConnection conn = new MySqlConnection("Server=mysql-loca.alwaysdata.net;Database=loca_cineteca;Uid=loca;Pwd=prova98;");
+
+
         public bool DoWork()        //usata solo per controllare connettivita' dal client 
         {
             return true;
         }
 
-        public bool NuovoUtente(int myId, string myNome, string myCognome, string myEmail, string myPassword, bool myIsAdmin) {
 
-            Utente prova = new Utente(myId, myNome, myCognome, myEmail, myPassword, myIsAdmin); //Creo l'utene, ma prima dovremmo fare oppurtuni controlli nel database e poi TRY & CATCH 
-
-            if (prova != null)
-                return true;
-            else
-                return false;
-        }
-
-        public String GetNomeUtente()
+        public Utente GetUser(string email)
         {
-            Utente utente_prova = new Utente("cosmin");
-            return utente_prova.GetNome();
+
+            Utente myUtente;
+            try
+            {
+                conn.Open();
+
+                string strQuery = "SELECT * FROM UTENTE where email = '" + email + "'";
+                MySqlCommand cmd = new MySqlCommand(strQuery, conn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    myUtente = new Utente(Convert.ToInt32(reader["Id"]), reader["Email"].ToString(), reader["Passw"].ToString(), reader["Nome"].ToString(), reader["Cognome"].ToString(), Convert.ToBoolean(reader["IsAdmin"]));
+                    return myUtente;
+                }
+
+                return myUtente = new Utente();
+            }
+            catch (Exception ex)
+            {
+                return myUtente = new Utente();
+            }
         }
 
         public bool RegisterUser(string email, string passw, string nome, string cognome, int isAdmin)
         {
-            MySqlConnection conn = new MySqlConnection("Server=mysql-loca.alwaysdata.net;Database=loca_cineteca;Uid=loca;Pwd=prova98;");
             conn.Open();
 
             if (conn.State == ConnectionState.Open)
@@ -53,7 +66,7 @@ namespace WCFServer
             {
                 string cmd_string = "INSERT INTO UTENTE (Email, Passw, Nome, Cognome, IsAdmin) VALUES ('" + email + "', '"+passw+"', '"+nome+"', '"+cognome+"', '"+isAdmin+"')";
                 MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
-                cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();  
                 return true;
             }
             catch (Exception ex)
@@ -61,12 +74,12 @@ namespace WCFServer
                 Console.WriteLine(ex.ToString());
                 return false;
             }
+
         }
 
 
         public bool LoginUser(string email, string passw)
         {
-            MySqlConnection conn = new MySqlConnection("Server=mysql-loca.alwaysdata.net;Database=loca_cineteca;Uid=loca;Pwd=prova98;");
             conn.Open();
 
             if (conn.State == ConnectionState.Open)
@@ -82,8 +95,11 @@ namespace WCFServer
             {   //Cerco sul DB se credenziali corrette
                 string Login_string = "SELECT * FROM UTENTE Where Email = '" + email + "' AND Passw = '" + passw +"'";
                 MySqlCommand cmd = new MySqlCommand(Login_string, conn);
-                cmd.ExecuteNonQuery();
-                return true;
+                
+                if (cmd.ExecuteReader().HasRows)
+                    return true;
+                else
+                    return false;
             }
             catch (Exception ex)
             {
@@ -94,7 +110,6 @@ namespace WCFServer
 
         public List<Film> FilmsList()
         {
-            MySqlConnection conn = new MySqlConnection("Server=mysql-loca.alwaysdata.net;Database=loca_cineteca;Uid=loca;Pwd=prova98;");
             conn.Open();
 
             List<Film> films = new List<Film>();
