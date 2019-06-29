@@ -18,7 +18,13 @@ namespace cineteca
         public Home()
         {
             InitializeComponent();
-            wcfClient.FilmsList();
+            List<Film> films = new List<Film>();
+            films = wcfClient.FilmsList().ToList();
+
+            foreach (Film film in films){
+                   
+            }
+
         }
 
         

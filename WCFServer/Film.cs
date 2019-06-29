@@ -23,6 +23,26 @@ namespace WCFServer
             url_image = myUrl;
         }
 
+        public string GetTitolo()
+        {
+            return titolo;
+        }
+
+        public string GetDesc()
+        {
+            return descrizione;
+        }
+
+        public bool GetDisp()
+        {
+            return disponibile;
+        }
+
+        public string GetUrl()
+        {
+            return url_image;
+        }
+
 
     }
 }
