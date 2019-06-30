@@ -10,10 +10,14 @@ namespace WCFServer
     [DataContract]
     public class Film
     {
-        string titolo;
-        string descrizione;
-        bool disponibile;
-        string url_image;
+        [DataMember]
+        string titolo { get; set; }
+        [DataMember]
+        string descrizione { get; set; }
+        [DataMember]
+        bool disponibile { get; set; }
+        [DataMember]
+        string url_image { get; set; }
 
         public Film(string myTitolo, string myDescrizione, bool myDisp, string myUrl)
         {
@@ -23,6 +27,7 @@ namespace WCFServer
             url_image = myUrl;
         }
 
+        /*
         public string GetTitolo()
         {
             return titolo;
@@ -42,7 +47,7 @@ namespace WCFServer
         {
             return url_image;
         }
-
+        */
 
     }
 }

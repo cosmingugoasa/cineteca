@@ -36,10 +36,8 @@
             this.btn_logout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.store_panel = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
             this.PassEmail = new System.Windows.Forms.Label();
             this.toolStripMenu.SuspendLayout();
-            this.store_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripMenu
@@ -64,6 +62,7 @@
             this.btn_store.Name = "btn_store";
             this.btn_store.Size = new System.Drawing.Size(38, 19);
             this.btn_store.Text = "Store";
+            this.btn_store.Click += new System.EventHandler(this.btn_store_Click);
             // 
             // btn_library
             // 
@@ -90,7 +89,7 @@
             // btn_logout
             // 
             this.btn_logout.Name = "btn_logout";
-            this.btn_logout.Size = new System.Drawing.Size(180, 22);
+            this.btn_logout.Size = new System.Drawing.Size(112, 22);
             this.btn_logout.Text = "Logout";
             // 
             // toolStripDropDownButton1
@@ -106,22 +105,11 @@
             // 
             // store_panel
             // 
-            this.store_panel.Controls.Add(this.button1);
             this.store_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.store_panel.Location = new System.Drawing.Point(0, 39);
             this.store_panel.Name = "store_panel";
             this.store_panel.Size = new System.Drawing.Size(777, 386);
             this.store_panel.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(15, 15);
-            this.button1.Margin = new System.Windows.Forms.Padding(15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(211, 116);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // PassEmail
             // 
@@ -143,7 +131,6 @@
             this.Text = "Home";
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
-            this.store_panel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,7 +145,6 @@
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
         private System.Windows.Forms.ToolStripMenuItem btn_logout;
         private System.Windows.Forms.FlowLayoutPanel store_panel;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label PassEmail;
     }
 }

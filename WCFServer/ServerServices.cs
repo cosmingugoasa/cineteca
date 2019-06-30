@@ -43,7 +43,7 @@ namespace WCFServer
 
                 return myUtente = new Utente();
             }
-            catch (Exception ex)
+            catch
             {
                 return myUtente = new Utente();
             }
@@ -123,6 +123,7 @@ namespace WCFServer
                 {
                     Film film = new Film(reader.GetString(1), reader.GetString(2), Convert.ToBoolean(reader.GetString(3)), reader.GetString(4));
                     //Console.WriteLine(reader.GetString(1) + " " + reader.GetString(2) + " " + reader.GetString(3) + " " + reader.GetString(4));
+                    films.Add(film);
                 }
                 return films;
             }
