@@ -17,9 +17,10 @@ namespace cineteca
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Utente test = new Utente();
+            /*Utente test = new Utente();
             test.email = "user@test.com";
-            Application.Run(new Home(test));
+            Application.Run(new Home(test));*/
+            Application.Run(new LoginForm());
         }
     }
 }
