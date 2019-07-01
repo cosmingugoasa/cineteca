@@ -14,7 +14,6 @@ namespace cineteca
         public Home(Utente myUtente)
         {          
             InitializeComponent();
-            PassEmail.Text = myUtente.email;
             LoadStore();
         }
 
@@ -31,13 +30,12 @@ namespace cineteca
                 //creo bottone + handler
                 Button btn = new Button();
                 btn.Name = "btn_" + film.titolo;
-                btn.Text = film.titolo;
-                btn.Size = new Size(200, 100);
+                btn.Size = new Size(150, 200);
                 btn.Margin = new Padding(15, 15, 15, 15);
                 btn.Click += new EventHandler(filmButton_click);
                 //creo stream dati per l'immagine di copertina
                 WebClient wc = new WebClient();
-                byte[] bytes = wc.DownloadData(@"C:\Users\cosmi\Desktop\avatar-dvd-cover-art.jpg"); //da sostituire con url di drive una volta sistemate le immagini(funziona anche ora ma non e' ottimizzato(picchi di memoria occupata))
+                byte[] bytes = wc.DownloadData(film.url_image); //da sostituire con url di drive una volta sistemate le immagini(funziona anche ora ma non e' ottimizzato(picchi di memoria occupata))
                 MemoryStream ms = new MemoryStream(bytes);
                 Image img = Image.FromStream(ms);
                 btn.Image = img;
@@ -47,6 +45,9 @@ namespace cineteca
                 btn.Tag = film;
                 store_panel.Controls.Add(btn);
             }
+
+            btn_store.Enabled = false;
+            btn_library.Enabled = true;
         }
 
         //funzione creata da sviluppatori
@@ -54,5 +55,15 @@ namespace cineteca
             Button btn = sender as Button;
             MessageBox.Show(((Film)btn.Tag).descrizione);
         }
+
+        private void btn_library_Click(object sender, EventArgs e)
+        {
+            store_panel.Controls.Clear();
+            btn_store.Enabled = true;
+
+            btn_library.Enabled = false;
+        }
+
+        
     }
 }

@@ -41,6 +41,7 @@ namespace WCFServer
                     return myUtente;
                 }
 
+                conn.Close();
                 return myUtente = new Utente();
             }
             catch
@@ -66,15 +67,16 @@ namespace WCFServer
             {
                 string cmd_string = "INSERT INTO UTENTE (Email, Passw, Nome, Cognome, IsAdmin) VALUES ('" + email + "', '"+passw+"', '"+nome+"', '"+cognome+"', '"+isAdmin+"')";
                 MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
-                cmd.ExecuteNonQuery();  
+                cmd.ExecuteNonQuery();
+                conn.Close();
                 return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+                conn.Close();
                 return false;
             }
-
         }
 
 
@@ -96,14 +98,21 @@ namespace WCFServer
                 string Login_string = "SELECT * FROM UTENTE Where Email = '" + email + "' AND Passw = '" + passw +"'";
                 MySqlCommand cmd = new MySqlCommand(Login_string, conn);
 
-                if (cmd.ExecuteReader().HasRows)
+                if (cmd.ExecuteReader().HasRows) {
+                    conn.Close();
                     return true;
-                else
+                }
+                else {
+                    conn.Close();
                     return false;
+                }
+                    
+                
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+                conn.Close();
                 return false;
             }
         }
@@ -125,11 +134,13 @@ namespace WCFServer
                     //Console.WriteLine(reader.GetString(1) + " " + reader.GetString(2) + " " + reader.GetString(3) + " " + reader.GetString(4));
                     films.Add(film);
                 }
+                conn.Close();
                 return films;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+                conn.Close();
                 return films;
             }
         }
