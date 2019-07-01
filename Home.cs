@@ -52,13 +52,15 @@ namespace cineteca
             btn_library.Enabled = true;
         }
 
-        //funzione creata da sviluppatori
+        //funzione creata da sviluppatori, gestore eventi bottoni Film
         void filmButton_click(object sender, EventArgs e) {
             Button btn = sender as Button;
-            MessageBox.Show(((Film)btn.Tag).descrizione);
+
+            Form filmSpec = new FilmSpec(btn.Image, ((Film)btn.Tag).titolo, ((Film)btn.Tag).descrizione, ((Film)btn.Tag).disponibile);
+            filmSpec.Show();
         }
 
-        private void btn_library_Click(object sender, EventArgs e)
+        private void btn_library_Click_1(object sender, EventArgs e)
         {
             store_panel.Controls.Clear();
             btn_store.Enabled = true;
@@ -66,16 +68,15 @@ namespace cineteca
             btn_library.Enabled = false;
         }
 
-        
-
         private void btn_logout_Click(object sender, EventArgs e)
         {
-
-            if (utenteAttuale != null)
-                utenteAttuale = null;
-
             Application.Restart();
+        }
 
+        private void btn_refresh_Click(object sender, EventArgs e)
+        {
+            store_panel.Controls.Clear();
+            LoadStore();
         }
     }
 }
