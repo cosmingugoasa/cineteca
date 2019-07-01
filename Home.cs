@@ -14,9 +14,15 @@ namespace cineteca
         public Home(Utente myUtente)
         {          
             InitializeComponent();
-            utenteAttuale = myUtente;
-            btn_profile.Text = myUtente.email;
-            LoadStore();
+            utenteAttuale = myUtente;                //inizializziamo Utente
+            btn_profile.Text = myUtente.email;       //Email Visibile nella DDL
+
+            if (utenteAttuale.isAdmin) //Se utente admin permetto di aggiungere film
+            {
+                btn_addFilm.Visible = true;
+            }
+
+            LoadStore();    //Carico film
         }
 
         private void btn_store_Click(object sender, EventArgs e)
@@ -63,21 +69,32 @@ namespace cineteca
 
         private void btn_library_Click_1(object sender, EventArgs e)
         {
-            store_panel.Controls.Clear();
-            btn_store.Enabled = true;
+            store_panel.Controls.Clear();   //Ripuliamo Home dai film
+            btn_store.Enabled = true; 
 
             btn_library.Enabled = false;
         }
 
         private void btn_logout_Click(object sender, EventArgs e)
         {
-            Application.Restart();
+            Application.Restart(); //Riavviamo l'applicazione 
         }
 
         private void btn_refresh_Click(object sender, EventArgs e)
         {
             store_panel.Controls.Clear();
             LoadStore();
+        }
+
+        private void btn_addFilm_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            Form addFilm = new AddFilm();//Creiamo "addFilm" form
+
+            addFilm.ShowDialog();//Apro Home
+            this.Enabled = true; //Chiudo tutto altrimenti rimane nascosto e non si chiude il programma
+            btn_refresh_Click(this,e); //Richiamo funzione per fare refresh
+
         }
     }
 }
