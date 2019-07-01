@@ -75,3 +75,5 @@ C:\Users\Locas\Desktop\cineteca\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\Locas\Desktop\cineteca\bin\Debug\MySql.Data.xml
 C:\Users\Locas\Desktop\cineteca\obj\Debug\cineteca.Home.resources
 C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\obj\Debug\cineteca.FilmSpec.resources
+C:\Users\Mattia\Desktop\cineteca\obj\Debug\cineteca.FilmSpec.resources
+C:\Users\Mattia\Desktop\cineteca\obj\Debug\cineteca.AddFilm.resources

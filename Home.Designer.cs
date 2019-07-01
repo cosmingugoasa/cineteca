@@ -36,6 +36,7 @@
             this.btn_logout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenu = new System.Windows.Forms.ToolStrip();
             this.btn_refresh = new System.Windows.Forms.ToolStripButton();
+            this.btn_addFilm = new System.Windows.Forms.Button();
             this.toolStripMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,11 +114,23 @@
             this.btn_refresh.Text = "refresh";
             this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
             // 
+            // btn_addFilm
+            // 
+            this.btn_addFilm.Location = new System.Drawing.Point(653, 11);
+            this.btn_addFilm.Name = "btn_addFilm";
+            this.btn_addFilm.Size = new System.Drawing.Size(75, 23);
+            this.btn_addFilm.TabIndex = 2;
+            this.btn_addFilm.Text = "Add Film";
+            this.btn_addFilm.UseVisualStyleBackColor = true;
+            this.btn_addFilm.Visible = false;
+            this.btn_addFilm.Click += new System.EventHandler(this.btn_addFilm_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(777, 477);
+            this.Controls.Add(this.btn_addFilm);
             this.Controls.Add(this.store_panel);
             this.Controls.Add(this.toolStripMenu);
             this.Name = "Home";
@@ -137,5 +150,6 @@
         private System.Windows.Forms.ToolStripMenuItem btn_logout;
         private System.Windows.Forms.ToolStrip toolStripMenu;
         private System.Windows.Forms.ToolStripButton btn_refresh;
+        private System.Windows.Forms.Button btn_addFilm;
     }
 }
