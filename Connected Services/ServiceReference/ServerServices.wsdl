@@ -37,6 +37,18 @@
   <wsdl:message name="IServerServices_GetUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IServerServices_RentFilm_InputMessage">
+    <wsdl:part name="parameters" element="tns:RentFilm" />
+  </wsdl:message>
+  <wsdl:message name="IServerServices_RentFilm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RentFilmResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServerServices_SetDispZero_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetDispZero" />
+  </wsdl:message>
+  <wsdl:message name="IServerServices_SetDispZero_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetDispZeroResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServerServices">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/DoWork" message="tns:IServerServices_DoWork_InputMessage" />
@@ -57,6 +69,14 @@
     <wsdl:operation name="GetUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/GetUser" message="tns:IServerServices_GetUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/GetUserResponse" message="tns:IServerServices_GetUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RentFilm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/RentFilm" message="tns:IServerServices_RentFilm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/RentFilmResponse" message="tns:IServerServices_RentFilm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetDispZero">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/SetDispZero" message="tns:IServerServices_SetDispZero_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/SetDispZeroResponse" message="tns:IServerServices_SetDispZero_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServerServices" type="tns:IServerServices">
@@ -99,6 +119,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetUser">
       <soap:operation soapAction="http://tempuri.org/IServerServices/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RentFilm">
+      <soap:operation soapAction="http://tempuri.org/IServerServices/RentFilm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetDispZero">
+      <soap:operation soapAction="http://tempuri.org/IServerServices/SetDispZero" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

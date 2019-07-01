@@ -46,6 +46,7 @@ namespace WCFServer
             }
             catch
             {
+                conn.Close();
                 return myUtente = new Utente();
             }
         }
@@ -53,16 +54,7 @@ namespace WCFServer
         public bool RegisterUser(string email, string passw, string nome, string cognome, int isAdmin)
         {
             conn.Open();
-
-            if (conn.State == ConnectionState.Open)
-            {
-                Console.WriteLine("Connessione DB aperta\n");
-            }
-            else
-            {
-                Console.WriteLine("Connessione DB fallita\n");
-            }
-
+            
             try
             {
                 string cmd_string = "INSERT INTO UTENTE (Email, Passw, Nome, Cognome, IsAdmin) VALUES ('" + email + "', '"+passw+"', '"+nome+"', '"+cognome+"', '"+isAdmin+"')";
@@ -130,7 +122,8 @@ namespace WCFServer
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    Film film = new Film(reader.GetString(1), reader.GetString(2), Convert.ToBoolean(reader.GetString(3)), reader.GetString(4));
+                    Console.WriteLine(reader.GetString(0) + " " + reader.GetString(1));
+                    Film film = new Film(Convert.ToInt32(reader.GetString(0)), reader.GetString(1), reader.GetString(2), Convert.ToBoolean(reader.GetString(3)), reader.GetString(4));
                     films.Add(film);
                 }
                 conn.Close();
@@ -141,6 +134,47 @@ namespace WCFServer
                 Console.WriteLine(ex.ToString());
                 conn.Close();
                 return films;
+            }
+        }
+
+        public bool RentFilm(int user_id, int film_id, string start_nol, string stop_nol) {
+
+            conn.Open();
+
+            try
+            {
+                string cmd_string = "INSERT INTO NOLEGGIO (IdUtente, IdFilm, InizioNoleggio, FineNoleggio) VALUES ('" + user_id + "', '" + film_id + "', '" + start_nol + "', '" + stop_nol + "')";
+                Console.WriteLine(cmd_string);
+                MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                conn.Close();
+                return false;
+            }
+        }
+
+        public bool SetDispZero(int film_id) {
+            conn.Open();
+
+            try
+            {
+                string cmd_string = "UPDATE FILM SET Disponibile = 0 WHERE FILM.Id = " + film_id + ";";
+                Console.WriteLine(cmd_string);
+                MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                conn.Close();
+                return false;
             }
         }
     }

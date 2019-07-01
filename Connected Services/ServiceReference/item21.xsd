@@ -10,6 +10,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="descrizione" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="disponibile" type="xs:boolean" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
       <xs:element minOccurs="0" name="titolo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="url_image" nillable="true" type="xs:string" />
     </xs:sequence>

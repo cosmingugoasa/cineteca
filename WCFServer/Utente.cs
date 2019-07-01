@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WCFServer
 {
@@ -24,9 +19,7 @@ namespace WCFServer
         [DataMember]
         private bool isAdmin { get; set; }
 
-        public Utente() {
-   
-        }
+        public Utente() {}
 
         public Utente(int myId, string myEmail, string myPassword, string myNome, string myCognome, bool myIsAdmin)
         {
@@ -37,16 +30,6 @@ namespace WCFServer
             password = myPassword;
             isAdmin = myIsAdmin;
         }
-
-        public string GetNome()
-        {
-            return nome;
-        }
-
-  
-        public string GetEmail()
-        {
-            return email;
-        }
+        
     }
 }

@@ -11,6 +11,8 @@ namespace WCFServer
     public class Film
     {
         [DataMember]
+        int id { get; set; }
+        [DataMember]
         string titolo { get; set; }
         [DataMember]
         string descrizione { get; set; }
@@ -19,35 +21,12 @@ namespace WCFServer
         [DataMember]
         string url_image { get; set; }
 
-        public Film(string myTitolo, string myDescrizione, bool myDisp, string myUrl)
+        public Film(int myId, string myTitolo, string myDescrizione, bool myDisp, string myUrl)
         {
             titolo = myTitolo;
             descrizione = myDescrizione;
             disponibile = myDisp;
             url_image = myUrl;
         }
-
-        /*
-        public string GetTitolo()
-        {
-            return titolo;
-        }
-
-        public string GetDesc()
-        {
-            return descrizione;
-        }
-
-        public bool GetDisp()
-        {
-            return disponibile;
-        }
-
-        public string GetUrl()
-        {
-            return url_image;
-        }
-        */
-
     }
 }

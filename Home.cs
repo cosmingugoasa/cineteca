@@ -28,7 +28,7 @@ namespace cineteca
         void LoadStore()
         {
             foreach (Film film in wcfClient.FilmsList())
-            {
+            {                
                 //creo bottone + handler
                 Button btn = new Button();
                 btn.Name = "btn_" + film.titolo;
@@ -55,9 +55,10 @@ namespace cineteca
         //funzione creata da sviluppatori, gestore eventi bottoni Film
         void filmButton_click(object sender, EventArgs e) {
             Button btn = sender as Button;
+            MessageBox.Show(((Film)btn.Tag).id + ((Film)btn.Tag).titolo);
 
-            Form filmSpec = new FilmSpec(btn.Image, ((Film)btn.Tag).titolo, ((Film)btn.Tag).descrizione, ((Film)btn.Tag).disponibile);
-            filmSpec.Show();
+            //Form filmSpec = new FilmSpec(utenteAttuale, btn.Image, ((Film)btn.Tag).id, ((Film)btn.Tag).titolo, ((Film)btn.Tag).descrizione, ((Film)btn.Tag).disponibile);
+            //filmSpec.Show();
         }
 
         private void btn_library_Click_1(object sender, EventArgs e)

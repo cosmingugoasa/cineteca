@@ -72,4 +72,35 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RentFilm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="user_id" type="xs:int" />
+        <xs:element minOccurs="0" name="film_id" type="xs:int" />
+        <xs:element minOccurs="0" name="start_nol" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="stop_nol" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RentFilmResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RentFilmResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetDispZero">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="film_id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetDispZeroResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SetDispZeroResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

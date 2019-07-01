@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ServiceModel;
 
 namespace WCFServer
@@ -21,5 +22,11 @@ namespace WCFServer
 
         [OperationContract]
         Utente GetUser(string email);
+
+        [OperationContract]
+        bool RentFilm(int user_id, int film_id, string start_nol, string stop_nol);
+
+        [OperationContract]
+        bool SetDispZero(int film_id);
     }
 }
