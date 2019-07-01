@@ -41,10 +41,10 @@ namespace cineteca
 
             if (wcfClient.LoginUser(tb_email_login.Text,tb_password_login.Text))//controllo se credenziali corrette
             {
-                Utente myUtente = wcfClient.GetUser(tb_email_login.Text);//Oggetto utente con credenziali
                 OperationStatus.Text = "Login completed";
                
-                Form homeForm = new Home(myUtente);//Creiamo HomeForm e passaimo oggetto utente               
+                Form homeForm = new Home(wcfClient.GetUser(tb_email_login.Text));//Creiamo HomeForm e passaimo oggetto utente
+                
                 this.Hide(); //nascondo LoginForm
                 homeForm.ShowDialog();//Apro Home
                 this.Close(); //Chiudo tutto altrimenti rimane nascosto e non si chiude il programma

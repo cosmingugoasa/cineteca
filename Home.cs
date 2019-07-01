@@ -10,11 +10,12 @@ namespace cineteca
     public partial class Home : Form
     {
         ServerServicesClient wcfClient = new ServerServicesClient();
-
+        Utente utenteAttuale;
         public Home(Utente myUtente)
         {          
             InitializeComponent();
-            PassEmail.Text = myUtente.email;
+            utenteAttuale = myUtente;
+            btn_profile.Text = myUtente.email;
             LoadStore();
         }
 
@@ -36,11 +37,11 @@ namespace cineteca
                 btn.Margin = new Padding(15, 15, 15, 15);
                 btn.Click += new EventHandler(filmButton_click);
                 //creo stream dati per l'immagine di copertina
-                WebClient wc = new WebClient();
-                byte[] bytes = wc.DownloadData(@"C:\Users\cosmi\Desktop\avatar-dvd-cover-art.jpg"); //da sostituire con url di drive una volta sistemate le immagini(funziona anche ora ma non e' ottimizzato(picchi di memoria occupata))
-                MemoryStream ms = new MemoryStream(bytes);
-                Image img = Image.FromStream(ms);
-                btn.Image = img;
+                WebClient wc = new WebClient(); //creaiamo client per effettuare richieste http
+                byte[] bytes = wc.DownloadData(film.url_image); //download immagine tramite URL drive
+                MemoryStream ms = new MemoryStream(bytes); //mette i byte nella ram
+                Image img = Image.FromStream(ms);//Ricrea immagine tramite i byte
+                btn.Image = img; //mettiamo  immagine sul bottone
                 ms.Close();
 
                 //assegno oggetto film al bottone
@@ -53,6 +54,16 @@ namespace cineteca
         void filmButton_click(object sender, EventArgs e) {
             Button btn = sender as Button;
             MessageBox.Show(((Film)btn.Tag).descrizione);
+        }
+
+        private void btn_logout_Click(object sender, EventArgs e)
+        {
+
+            if (utenteAttuale != null)
+                utenteAttuale = null;
+
+            Application.Restart();
+
         }
     }
 }

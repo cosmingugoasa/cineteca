@@ -29,29 +29,34 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            this.toolStripMenu = new System.Windows.Forms.ToolStrip();
-            this.btn_store = new System.Windows.Forms.ToolStripButton();
-            this.btn_library = new System.Windows.Forms.ToolStripButton();
-            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.btn_logout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.store_panel = new System.Windows.Forms.FlowLayoutPanel();
-            this.PassEmail = new System.Windows.Forms.Label();
+            this.btn_store = new System.Windows.Forms.ToolStripButton();
+            this.btn_library = new System.Windows.Forms.ToolStripButton();
+            this.btn_profile = new System.Windows.Forms.ToolStripDropDownButton();
+            this.btn_logout = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenu = new System.Windows.Forms.ToolStrip();
             this.toolStripMenu.SuspendLayout();
             this.SuspendLayout();
             // 
-            // toolStripMenu
+            // toolStripDropDownButton1
             // 
-            this.toolStripMenu.BackColor = System.Drawing.Color.Gray;
-            this.toolStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btn_store,
-            this.btn_library,
-            this.toolStripDropDownButton2});
-            this.toolStripMenu.Location = new System.Drawing.Point(0, 0);
-            this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(777, 39);
-            this.toolStripMenu.TabIndex = 0;
-            this.toolStripMenu.Text = "toolStrip1";
+            this.toolStripDropDownButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripDropDownButton1.BackColor = System.Drawing.Color.Gray;
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(23, 23);
+            this.toolStripDropDownButton1.Text = "Profile";
+            // 
+            // store_panel
+            // 
+            this.store_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.store_panel.Location = new System.Drawing.Point(0, 39);
+            this.store_panel.Name = "store_panel";
+            this.store_panel.Size = new System.Drawing.Size(777, 386);
+            this.store_panel.TabIndex = 1;
             // 
             // btn_store
             // 
@@ -74,50 +79,36 @@
             this.btn_library.Size = new System.Drawing.Size(47, 19);
             this.btn_library.Text = "Library";
             // 
-            // toolStripDropDownButton2
+            // btn_profile
             // 
-            this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btn_profile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btn_profile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btn_logout});
-            this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
-            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton2.Margin = new System.Windows.Forms.Padding(10);
-            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(54, 19);
-            this.toolStripDropDownButton2.Text = "Profile";
+            this.btn_profile.Image = ((System.Drawing.Image)(resources.GetObject("btn_profile.Image")));
+            this.btn_profile.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_profile.Margin = new System.Windows.Forms.Padding(10);
+            this.btn_profile.Name = "btn_profile";
+            this.btn_profile.Size = new System.Drawing.Size(13, 19);
             // 
             // btn_logout
             // 
             this.btn_logout.Name = "btn_logout";
-            this.btn_logout.Size = new System.Drawing.Size(112, 22);
+            this.btn_logout.Size = new System.Drawing.Size(180, 22);
             this.btn_logout.Text = "Logout";
+            this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
             // 
-            // toolStripDropDownButton1
+            // toolStripMenu
             // 
-            this.toolStripDropDownButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripDropDownButton1.BackColor = System.Drawing.Color.Gray;
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(23, 23);
-            this.toolStripDropDownButton1.Text = "Profile";
-            // 
-            // store_panel
-            // 
-            this.store_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.store_panel.Location = new System.Drawing.Point(0, 39);
-            this.store_panel.Name = "store_panel";
-            this.store_panel.Size = new System.Drawing.Size(777, 386);
-            this.store_panel.TabIndex = 1;
-            // 
-            // PassEmail
-            // 
-            this.PassEmail.AutoSize = true;
-            this.PassEmail.Location = new System.Drawing.Point(636, 9);
-            this.PassEmail.Name = "PassEmail";
-            this.PassEmail.Size = new System.Drawing.Size(0, 13);
-            this.PassEmail.TabIndex = 4;
+            this.toolStripMenu.BackColor = System.Drawing.Color.Gray;
+            this.toolStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btn_store,
+            this.btn_library,
+            this.btn_profile});
+            this.toolStripMenu.Location = new System.Drawing.Point(0, 0);
+            this.toolStripMenu.Name = "toolStripMenu";
+            this.toolStripMenu.Size = new System.Drawing.Size(777, 39);
+            this.toolStripMenu.TabIndex = 0;
+            this.toolStripMenu.Text = "toolStrip1";
             // 
             // Home
             // 
@@ -125,7 +116,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(777, 425);
             this.Controls.Add(this.store_panel);
-            this.Controls.Add(this.PassEmail);
             this.Controls.Add(this.toolStripMenu);
             this.Name = "Home";
             this.Text = "Home";
@@ -137,14 +127,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStrip toolStripMenu;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.FlowLayoutPanel store_panel;
         private System.Windows.Forms.ToolStripButton btn_store;
         private System.Windows.Forms.ToolStripButton btn_library;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
+        private System.Windows.Forms.ToolStripDropDownButton btn_profile;
         private System.Windows.Forms.ToolStripMenuItem btn_logout;
-        private System.Windows.Forms.FlowLayoutPanel store_panel;
-        private System.Windows.Forms.Label PassEmail;
+        private System.Windows.Forms.ToolStrip toolStripMenu;
     }
 }
