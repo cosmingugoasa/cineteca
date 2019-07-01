@@ -57,26 +57,31 @@ namespace WCFServer
             if (conn.State == ConnectionState.Open)
             {
                 Console.WriteLine("Connessione DB aperta\n");
+                try
+                {
+                    string cmd_string = "INSERT INTO UTENTE (Email, Passw, Nome, Cognome, IsAdmin) VALUES ('" + email + "', '" + passw + "', '" + nome + "', '" + cognome + "', '" + isAdmin + "')";
+                    MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    conn.Dispose();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    conn.Close();
+                    conn.Dispose();
+                    return false;
+                }
+                
             }
             else
             {
                 Console.WriteLine("Connessione DB fallita\n");
-            }
-
-            try
-            {
-                string cmd_string = "INSERT INTO UTENTE (Email, Passw, Nome, Cognome, IsAdmin) VALUES ('" + email + "', '"+passw+"', '"+nome+"', '"+cognome+"', '"+isAdmin+"')";
-                MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-                conn.Close();
                 return false;
             }
+
+            
         }
 
 
@@ -100,10 +105,12 @@ namespace WCFServer
 
                 if (cmd.ExecuteReader().HasRows) {
                     conn.Close();
+                    conn.Dispose();
                     return true;
                 }
                 else {
                     conn.Close();
+                    conn.Dispose();
                     return false;
                 }
                     
@@ -134,12 +141,14 @@ namespace WCFServer
                     films.Add(film);
                 }
                 conn.Close();
+                conn.Dispose();
                 return films;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
                 conn.Close();
+                conn.Dispose();
                 return films;
             }
         }
