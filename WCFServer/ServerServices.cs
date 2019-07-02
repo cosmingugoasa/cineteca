@@ -176,12 +176,12 @@ namespace WCFServer
             }
         }
 
-        public bool SetDispZero(int film_id) {
+        public bool SetFilmStatus(int film_id, bool disp) {
             conn.Open();
 
             try
             {
-                string cmd_string = "UPDATE FILM SET Disponibile = 0 WHERE FILM.Id = " + film_id + ";";
+                string cmd_string = "UPDATE FILM SET Disponibile = " + Convert.ToInt32(disp) + " WHERE FILM.Id = " + film_id + ";";
                 Console.WriteLine(cmd_string);
                 MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
                 cmd.ExecuteNonQuery();

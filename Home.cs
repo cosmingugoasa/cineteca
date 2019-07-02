@@ -34,21 +34,28 @@ namespace cineteca
         void LoadStore()
         {
             foreach (Film film in wcfClient.FilmsList())
-            {                
+            {
                 //creo bottone + handler
                 Button btn = new Button();
-                btn.Name = "btn_" + film.titolo;
+                btn.Name = "btn_" + film.id;
                 btn.Size = new Size(150, 200);
                 btn.Margin = new Padding(15, 15, 15, 15);
                 btn.Click += new EventHandler(filmButton_click);
                 //creo stream dati per l'immagine di copertina
-                WebClient wc = new WebClient(); //creaiamo client per effettuare richieste http
-                byte[] bytes = wc.DownloadData(film.url_image); //download immagine tramite URL drive
-                MemoryStream ms = new MemoryStream(bytes); //mette i byte nella ram
-                Image img = Image.FromStream(ms);//Ricrea immagine tramite i byte
-                btn.Image = img; //mettiamo  immagine sul bottone
-                ms.Close();
-
+                try
+                {
+                    WebClient wc = new WebClient(); //creaiamo client per effettuare richieste http
+                    byte[] bytes = wc.DownloadData(film.url_image); //download immagine tramite URL drive
+                    MemoryStream ms = new MemoryStream(bytes); //mette i byte nella ram
+                    Image img = Image.FromStream(ms);//Ricrea immagine tramite i byte
+                    btn.Image = img; //mettiamo  immagine sul bottone
+                    ms.Close();
+                }
+                catch
+                {
+                    btn.Text = film.titolo;
+                }
+                
                 //assegno oggetto film al bottone
                 btn.Tag = film;
                 store_panel.Controls.Add(btn);
@@ -61,10 +68,10 @@ namespace cineteca
         //funzione creata da sviluppatori, gestore eventi bottoni Film
         void filmButton_click(object sender, EventArgs e) {
             Button btn = sender as Button;
-            MessageBox.Show(((Film)btn.Tag).id + ((Film)btn.Tag).titolo);
+            //MessageBox.Show(((Film)btn.Tag).id + ((Film)btn.Tag).titolo);
 
-            //Form filmSpec = new FilmSpec(utenteAttuale, btn.Image, ((Film)btn.Tag).id, ((Film)btn.Tag).titolo, ((Film)btn.Tag).descrizione, ((Film)btn.Tag).disponibile);
-            //filmSpec.Show();
+            Form filmSpec = new FilmSpec(utenteAttuale, btn.Image, Convert.ToInt32(((Film)btn.Tag).id), ((Film)btn.Tag).titolo, ((Film)btn.Tag).descrizione, ((Film)btn.Tag).disponibile);
+            filmSpec.Show();
         }
 
         private void btn_library_Click_1(object sender, EventArgs e)

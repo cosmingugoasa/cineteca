@@ -89,17 +89,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SetDispZero">
+  <xs:element name="SetFilmStatus">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="film_id" type="xs:int" />
+        <xs:element minOccurs="0" name="disp" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SetDispZeroResponse">
+  <xs:element name="SetFilmStatusResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="SetDispZeroResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="SetFilmStatusResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

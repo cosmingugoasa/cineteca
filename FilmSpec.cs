@@ -38,9 +38,10 @@ namespace cineteca
         {
             DateTime date1 = new DateTime(2019, 07, 01);
             DateTime date2 = new DateTime(2019, 08, 01);
-            if (wcfClient.RentFilm(utenteAttuale.id, film_id, date1.ToString("yyyy-MM-dd"), date2.ToString("yyyy-MM-dd")) && wcfClient.SetDispZero(film_id))
+            if (wcfClient.RentFilm(utenteAttuale.id, film_id, date1.ToString("yyyy-MM-dd"), date2.ToString("yyyy-MM-dd")) && wcfClient.SetFilmStatus(film_id, false))
             {
                 MessageBox.Show("Film Noleggiato !");
+                Close();
             }
             else
             {

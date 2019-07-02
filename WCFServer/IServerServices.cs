@@ -27,6 +27,6 @@ namespace WCFServer
         bool RentFilm(int user_id, int film_id, string start_nol, string stop_nol);
 
         [OperationContract]
-        bool SetDispZero(int film_id);
+        bool SetFilmStatus(int film_id, bool disp);
     }
 }

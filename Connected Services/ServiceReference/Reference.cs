@@ -287,11 +287,11 @@ namespace cineteca.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/RentFilm", ReplyAction="http://tempuri.org/IServerServices/RentFilmResponse")]
         System.Threading.Tasks.Task<bool> RentFilmAsync(int user_id, int film_id, string start_nol, string stop_nol);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/SetDispZero", ReplyAction="http://tempuri.org/IServerServices/SetDispZeroResponse")]
-        bool SetDispZero(int film_id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/SetFilmStatus", ReplyAction="http://tempuri.org/IServerServices/SetFilmStatusResponse")]
+        bool SetFilmStatus(int film_id, bool disp);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/SetDispZero", ReplyAction="http://tempuri.org/IServerServices/SetDispZeroResponse")]
-        System.Threading.Tasks.Task<bool> SetDispZeroAsync(int film_id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/SetFilmStatus", ReplyAction="http://tempuri.org/IServerServices/SetFilmStatusResponse")]
+        System.Threading.Tasks.Task<bool> SetFilmStatusAsync(int film_id, bool disp);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -369,12 +369,12 @@ namespace cineteca.ServiceReference {
             return base.Channel.RentFilmAsync(user_id, film_id, start_nol, stop_nol);
         }
         
-        public bool SetDispZero(int film_id) {
-            return base.Channel.SetDispZero(film_id);
+        public bool SetFilmStatus(int film_id, bool disp) {
+            return base.Channel.SetFilmStatus(film_id, disp);
         }
         
-        public System.Threading.Tasks.Task<bool> SetDispZeroAsync(int film_id) {
-            return base.Channel.SetDispZeroAsync(film_id);
+        public System.Threading.Tasks.Task<bool> SetFilmStatusAsync(int film_id, bool disp) {
+            return base.Channel.SetFilmStatusAsync(film_id, disp);
         }
     }
 }

@@ -43,11 +43,11 @@
   <wsdl:message name="IServerServices_RentFilm_OutputMessage">
     <wsdl:part name="parameters" element="tns:RentFilmResponse" />
   </wsdl:message>
-  <wsdl:message name="IServerServices_SetDispZero_InputMessage">
-    <wsdl:part name="parameters" element="tns:SetDispZero" />
+  <wsdl:message name="IServerServices_SetFilmStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetFilmStatus" />
   </wsdl:message>
-  <wsdl:message name="IServerServices_SetDispZero_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SetDispZeroResponse" />
+  <wsdl:message name="IServerServices_SetFilmStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetFilmStatusResponse" />
   </wsdl:message>
   <wsdl:portType name="IServerServices">
     <wsdl:operation name="DoWork">
@@ -74,9 +74,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/RentFilm" message="tns:IServerServices_RentFilm_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/RentFilmResponse" message="tns:IServerServices_RentFilm_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SetDispZero">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/SetDispZero" message="tns:IServerServices_SetDispZero_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/SetDispZeroResponse" message="tns:IServerServices_SetDispZero_OutputMessage" />
+    <wsdl:operation name="SetFilmStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/SetFilmStatus" message="tns:IServerServices_SetFilmStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/SetFilmStatusResponse" message="tns:IServerServices_SetFilmStatus_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServerServices" type="tns:IServerServices">
@@ -135,8 +135,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SetDispZero">
-      <soap:operation soapAction="http://tempuri.org/IServerServices/SetDispZero" style="document" />
+    <wsdl:operation name="SetFilmStatus">
+      <soap:operation soapAction="http://tempuri.org/IServerServices/SetFilmStatus" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

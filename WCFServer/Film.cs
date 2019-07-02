@@ -23,6 +23,7 @@ namespace WCFServer
 
         public Film(int myId, string myTitolo, string myDescrizione, bool myDisp, string myUrl)
         {
+            id = myId;
             titolo = myTitolo;
             descrizione = myDescrizione;
             disponibile = myDisp;
