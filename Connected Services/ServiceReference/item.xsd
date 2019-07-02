@@ -103,4 +103,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="InsertFilm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="titolo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="descrizione" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="disponibile" type="xs:boolean" />
+        <xs:element minOccurs="0" name="url_image" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertFilmResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertFilmResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

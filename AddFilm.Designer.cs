@@ -62,6 +62,7 @@
             this.btn_add.TabIndex = 4;
             this.btn_add.Text = "ADD FILM";
             this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.btn_InsertFilm);
             // 
             // LabelUrl
             // 

@@ -116,12 +116,16 @@
             // 
             // btn_addFilm
             // 
+            this.btn_addFilm.BackColor = System.Drawing.Color.Gray;
+            this.btn_addFilm.FlatAppearance.BorderSize = 0;
+            this.btn_addFilm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_addFilm.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_addFilm.Location = new System.Drawing.Point(653, 11);
             this.btn_addFilm.Name = "btn_addFilm";
             this.btn_addFilm.Size = new System.Drawing.Size(75, 23);
             this.btn_addFilm.TabIndex = 2;
             this.btn_addFilm.Text = "Add Film";
-            this.btn_addFilm.UseVisualStyleBackColor = true;
+            this.btn_addFilm.UseVisualStyleBackColor = false;
             this.btn_addFilm.Visible = false;
             this.btn_addFilm.Click += new System.EventHandler(this.btn_addFilm_Click);
             // 
