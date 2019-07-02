@@ -23,7 +23,7 @@ namespace WCFServer
         }
 
 
-        public Utente GetUser(string email)
+        public Utente GetUser(string email) //Restituise Un oggetto utente contentente i dati dell'utente
         {
 
             Utente myUtente;
@@ -51,7 +51,7 @@ namespace WCFServer
             }
         }
 
-        public bool RegisterUser(string email, string passw, string nome, string cognome, int isAdmin)
+        public bool RegisterUser(string email, string passw, string nome, string cognome, int isAdmin) //Registrazione dell'utente su db
         {
             conn.Open();
 
@@ -86,7 +86,7 @@ namespace WCFServer
         }
 
 
-        public bool LoginUser(string email, string passw)
+        public bool LoginUser(string email, string passw)//Login dell'utente
         {
             conn.Open();
 
@@ -121,11 +121,12 @@ namespace WCFServer
             {
                 Console.WriteLine(ex.ToString());
                 conn.Close();
+                conn.Dispose();
                 return false;
             }
         }
 
-        public List<Film> StoreFilmsList()
+        public List<Film> StoreFilmsList() //Ritorna lista di film dal DB da caricare nella home
         {
             conn.Open();
 
@@ -174,7 +175,7 @@ namespace WCFServer
             }
         }
 
-        public bool SetFilmStatus(int film_id, bool disp) {
+        public bool SetFilmStatus(int film_id, bool disp) { //Si rende indisponibile il film
             conn.Open();
 
             try
@@ -243,5 +244,50 @@ namespace WCFServer
                 return false;
             }
         }
+
+        public bool InsertFilm(string titolo, string descrizione, bool disponibile, string url_image)  { //Inserisce film nel DB
+
+            try
+            {
+                conn.Open();
+                if (conn.State == ConnectionState.Open)
+                {
+                    Console.WriteLine("Connessione DB aperta\n");
+                    string cmd_string = "INSERT INTO FILM (Titolo, Descrizione, Disponibile, UrlImage) VALUES ('" + titolo + "', '" + descrizione + "', " + disponibile + ", '" + url_image + "')";
+                    Console.WriteLine(cmd_string);
+                    MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
+                    
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        conn.Close();
+                        conn.Dispose();
+                        return true;
+                    }
+
+                    else{
+                        conn.Close();
+                        conn.Dispose();
+                        return false;
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("Connessione DB fallita\n");
+                    conn.Close();
+                    conn.Dispose();
+                    return false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                conn.Close();
+                return false;
+            }
+
+        }
+
     }
 }

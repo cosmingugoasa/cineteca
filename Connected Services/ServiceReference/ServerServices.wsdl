@@ -61,6 +61,12 @@
   <wsdl:message name="IServerServices_ReturnFilm_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReturnFilmResponse" />
   </wsdl:message>
+  <wsdl:message name="IServerServices_InsertFilm_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertFilm" />
+  </wsdl:message>
+  <wsdl:message name="IServerServices_InsertFilm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertFilmResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServerServices">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/DoWork" message="tns:IServerServices_DoWork_InputMessage" />
@@ -97,6 +103,10 @@
     <wsdl:operation name="ReturnFilm">
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/ReturnFilm" message="tns:IServerServices_ReturnFilm_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/ReturnFilmResponse" message="tns:IServerServices_ReturnFilm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertFilm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/InsertFilm" message="tns:IServerServices_InsertFilm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/InsertFilmResponse" message="tns:IServerServices_InsertFilm_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServerServices" type="tns:IServerServices">
@@ -175,6 +185,15 @@
     </wsdl:operation>
     <wsdl:operation name="ReturnFilm">
       <soap:operation soapAction="http://tempuri.org/IServerServices/ReturnFilm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertFilm">
+      <soap:operation soapAction="http://tempuri.org/IServerServices/InsertFilm" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
