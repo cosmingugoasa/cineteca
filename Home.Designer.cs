@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            this.store_panel = new System.Windows.Forms.FlowLayoutPanel();
+            this.main_panel = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_store = new System.Windows.Forms.ToolStripButton();
             this.btn_library = new System.Windows.Forms.ToolStripButton();
             this.btn_profile = new System.Windows.Forms.ToolStripDropDownButton();
@@ -40,13 +40,13 @@
             this.toolStripMenu.SuspendLayout();
             this.SuspendLayout();
             // 
-            // store_panel
+            // main_panel
             // 
-            this.store_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.store_panel.Location = new System.Drawing.Point(0, 40);
-            this.store_panel.Name = "store_panel";
-            this.store_panel.Size = new System.Drawing.Size(777, 437);
-            this.store_panel.TabIndex = 1;
+            this.main_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.main_panel.Location = new System.Drawing.Point(0, 40);
+            this.main_panel.Name = "main_panel";
+            this.main_panel.Size = new System.Drawing.Size(777, 437);
+            this.main_panel.TabIndex = 1;
             // 
             // btn_store
             // 
@@ -131,7 +131,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(777, 477);
             this.Controls.Add(this.btn_addFilm);
-            this.Controls.Add(this.store_panel);
+            this.Controls.Add(this.main_panel);
             this.Controls.Add(this.toolStripMenu);
             this.Name = "Home";
             this.Text = "Home";
@@ -143,7 +143,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.FlowLayoutPanel store_panel;
+        private System.Windows.Forms.FlowLayoutPanel main_panel;
         private System.Windows.Forms.ToolStripButton btn_store;
         private System.Windows.Forms.ToolStripButton btn_library;
         private System.Windows.Forms.ToolStripDropDownButton btn_profile;

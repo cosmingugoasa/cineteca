@@ -18,7 +18,7 @@ namespace WCFServer
         bool LoginUser(string email, string passw);
 
         [OperationContract]
-        List<Film> FilmsList();
+        List<Film> StoreFilmsList();
 
         [OperationContract]
         Utente GetUser(string email);
@@ -28,5 +28,11 @@ namespace WCFServer
 
         [OperationContract]
         bool SetFilmStatus(int film_id, bool disp);
+
+        [OperationContract]
+        List<Film> LibraryFilmsList(int user_id);
+
+        [OperationContract]
+        bool ReturnFilm(int user_id, int film_id);
     }
 }

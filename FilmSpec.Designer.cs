@@ -36,6 +36,7 @@
             this.l_legenda_1 = new System.Windows.Forms.Label();
             this.l_legenda_2 = new System.Windows.Forms.Label();
             this.btn_legenda_2 = new System.Windows.Forms.Button();
+            this.btn_restituisci = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.img_film)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,11 +116,23 @@
             this.btn_legenda_2.Text = ": non disponibile";
             this.btn_legenda_2.UseVisualStyleBackColor = false;
             // 
+            // btn_restituisci
+            // 
+            this.btn_restituisci.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_restituisci.Location = new System.Drawing.Point(229, 272);
+            this.btn_restituisci.Name = "btn_restituisci";
+            this.btn_restituisci.Size = new System.Drawing.Size(232, 54);
+            this.btn_restituisci.TabIndex = 8;
+            this.btn_restituisci.Text = "Restituisci";
+            this.btn_restituisci.UseVisualStyleBackColor = false;
+            this.btn_restituisci.Click += new System.EventHandler(this.btn_restituisci_Click);
+            // 
             // FilmSpec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(475, 338);
+            this.Controls.Add(this.btn_restituisci);
             this.Controls.Add(this.l_legenda_2);
             this.Controls.Add(this.btn_legenda_2);
             this.Controls.Add(this.l_legenda_1);
@@ -146,5 +159,6 @@
         private System.Windows.Forms.Label l_legenda_1;
         private System.Windows.Forms.Label l_legenda_2;
         private System.Windows.Forms.Button btn_legenda_2;
+        private System.Windows.Forms.Button btn_restituisci;
     }
 }

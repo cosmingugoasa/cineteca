@@ -25,11 +25,11 @@
   <wsdl:message name="IServerServices_LoginUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoginUserResponse" />
   </wsdl:message>
-  <wsdl:message name="IServerServices_FilmsList_InputMessage">
-    <wsdl:part name="parameters" element="tns:FilmsList" />
+  <wsdl:message name="IServerServices_StoreFilmsList_InputMessage">
+    <wsdl:part name="parameters" element="tns:StoreFilmsList" />
   </wsdl:message>
-  <wsdl:message name="IServerServices_FilmsList_OutputMessage">
-    <wsdl:part name="parameters" element="tns:FilmsListResponse" />
+  <wsdl:message name="IServerServices_StoreFilmsList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StoreFilmsListResponse" />
   </wsdl:message>
   <wsdl:message name="IServerServices_GetUser_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUser" />
@@ -49,6 +49,18 @@
   <wsdl:message name="IServerServices_SetFilmStatus_OutputMessage">
     <wsdl:part name="parameters" element="tns:SetFilmStatusResponse" />
   </wsdl:message>
+  <wsdl:message name="IServerServices_LibraryFilmsList_InputMessage">
+    <wsdl:part name="parameters" element="tns:LibraryFilmsList" />
+  </wsdl:message>
+  <wsdl:message name="IServerServices_LibraryFilmsList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LibraryFilmsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServerServices_ReturnFilm_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReturnFilm" />
+  </wsdl:message>
+  <wsdl:message name="IServerServices_ReturnFilm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReturnFilmResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServerServices">
     <wsdl:operation name="DoWork">
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/DoWork" message="tns:IServerServices_DoWork_InputMessage" />
@@ -62,9 +74,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/LoginUser" message="tns:IServerServices_LoginUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/LoginUserResponse" message="tns:IServerServices_LoginUser_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="FilmsList">
-      <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/FilmsList" message="tns:IServerServices_FilmsList_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/FilmsListResponse" message="tns:IServerServices_FilmsList_OutputMessage" />
+    <wsdl:operation name="StoreFilmsList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/StoreFilmsList" message="tns:IServerServices_StoreFilmsList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/StoreFilmsListResponse" message="tns:IServerServices_StoreFilmsList_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/GetUser" message="tns:IServerServices_GetUser_InputMessage" />
@@ -77,6 +89,14 @@
     <wsdl:operation name="SetFilmStatus">
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/SetFilmStatus" message="tns:IServerServices_SetFilmStatus_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/SetFilmStatusResponse" message="tns:IServerServices_SetFilmStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LibraryFilmsList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/LibraryFilmsList" message="tns:IServerServices_LibraryFilmsList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/LibraryFilmsListResponse" message="tns:IServerServices_LibraryFilmsList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnFilm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/ReturnFilm" message="tns:IServerServices_ReturnFilm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/ReturnFilmResponse" message="tns:IServerServices_ReturnFilm_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServerServices" type="tns:IServerServices">
@@ -108,8 +128,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="FilmsList">
-      <soap:operation soapAction="http://tempuri.org/IServerServices/FilmsList" style="document" />
+    <wsdl:operation name="StoreFilmsList">
+      <soap:operation soapAction="http://tempuri.org/IServerServices/StoreFilmsList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -137,6 +157,24 @@
     </wsdl:operation>
     <wsdl:operation name="SetFilmStatus">
       <soap:operation soapAction="http://tempuri.org/IServerServices/SetFilmStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LibraryFilmsList">
+      <soap:operation soapAction="http://tempuri.org/IServerServices/LibraryFilmsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnFilm">
+      <soap:operation soapAction="http://tempuri.org/IServerServices/ReturnFilm" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

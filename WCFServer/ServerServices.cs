@@ -125,7 +125,7 @@ namespace WCFServer
             }
         }
 
-        public List<Film> FilmsList()
+        public List<Film> StoreFilmsList()
         {
             conn.Open();
 
@@ -138,7 +138,6 @@ namespace WCFServer
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    Console.WriteLine(reader.GetString(0) + " " + reader.GetString(1));
                     Film film = new Film(Convert.ToInt32(reader.GetString(0)), reader.GetString(1), reader.GetString(2), Convert.ToBoolean(reader.GetString(3)), reader.GetString(4));
                     films.Add(film);
                 }
@@ -162,7 +161,6 @@ namespace WCFServer
             try
             {
                 string cmd_string = "INSERT INTO NOLEGGIO (IdUtente, IdFilm, InizioNoleggio, FineNoleggio) VALUES ('" + user_id + "', '" + film_id + "', '" + start_nol + "', '" + stop_nol + "')";
-                Console.WriteLine(cmd_string);
                 MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
                 cmd.ExecuteNonQuery();
                 conn.Close();
@@ -185,6 +183,56 @@ namespace WCFServer
                 Console.WriteLine(cmd_string);
                 MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
                 cmd.ExecuteNonQuery();
+                conn.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                conn.Close();
+                return false;
+            }
+        }
+
+        public List<Film> LibraryFilmsList(int user_id) {
+            conn.Open();
+
+            List<Film> films = new List<Film>();
+
+            try
+            {
+                string query = "SELECT * FROM NOLEGGIO, FILM WHERE IdFilm = FILM.Id AND IdUtente = " + user_id;
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Console.WriteLine(reader["IdFilm"] + " " + reader["Titolo"]);
+                    Film film = new Film(Convert.ToInt32(reader["IdFilm"]), reader["Titolo"].ToString(), reader["Descrizione"].ToString(), Convert.ToBoolean(reader["Disponibile"]), reader["UrlImage"].ToString());
+                    films.Add(film);
+                }
+                conn.Close();
+                conn.Dispose();
+                return films;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                conn.Close();
+                conn.Dispose();
+                return films;
+            }
+        }
+
+        public bool ReturnFilm(int user_id, int film_id)
+        {
+            conn.Open();
+
+            try
+            {
+                string cmd_delete = "DELETE FROM NOLEGGIO WHERE IdUtente = " + user_id + " AND IdFilm = " + film_id ;
+                MySqlCommand cmd = new MySqlCommand(cmd_delete, conn);
+                cmd.ExecuteNonQuery();
+                
                 conn.Close();
                 return true;
             }

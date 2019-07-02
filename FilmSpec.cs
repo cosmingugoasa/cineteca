@@ -11,15 +11,16 @@ namespace cineteca
         Utente utenteAttuale;
         int film_id;
 
-        public FilmSpec(Utente myUtente, Image myImg, int myId, string myTitolo, string myDesc, bool myDisp)
+        public FilmSpec(Utente myUtente, Image myImg, int myFilmId, string myTitolo, string myDesc, bool myDisp)
         {
             InitializeComponent();
             img_film.Image = myImg;
-            film_id = myId;
+            film_id = myFilmId;
             l_titolo.Text = myTitolo;
             l_descrizione.Text = myDesc;
             utenteAttuale = myUtente;
 
+            btn_restituisci.Visible = false;
             btn_legenda_1.Enabled = false;
             btn_legenda_2.Enabled = false;
 
@@ -34,6 +35,23 @@ namespace cineteca
             }
         }
 
+        public FilmSpec(Utente myUtente, Image myImg, int myFilmId, string myTitolo, string myDesc)
+        {
+            InitializeComponent();
+            img_film.Image = myImg;
+            film_id = myFilmId;
+            l_titolo.Text = myTitolo;
+            l_descrizione.Text = myDesc;
+            utenteAttuale = myUtente;
+
+            btn_legenda_1.Visible = false;
+            btn_legenda_2.Visible = false;
+            l_legenda_1.Visible = false;
+            l_legenda_2.Visible = false;
+            btn_noleggia.Visible = false;
+
+        }
+
         private void btn_noleggia_Click(object sender, System.EventArgs e)
         {
             DateTime date1 = new DateTime(2019, 07, 01);
@@ -45,7 +63,19 @@ namespace cineteca
             }
             else
             {
-                MessageBox.Show("Errore !");
+                MessageBox.Show("Errore nel Noleggiare !");
+                Close();
+            }
+        }
+
+        private void btn_restituisci_Click(object sender, EventArgs e)
+        {
+            if (wcfClient.ReturnFilm(utenteAttuale.id, film_id) && wcfClient.SetFilmStatus(film_id, true)){
+                MessageBox.Show("Film Restituito !");
+                Close();
+            }
+            else {
+                MessageBox.Show("Errore nel Restituire !");
                 Close();
             }
         }

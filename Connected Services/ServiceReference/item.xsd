@@ -46,15 +46,15 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="FilmsList">
+  <xs:element name="StoreFilmsList">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="FilmsListResponse">
+  <xs:element name="StoreFilmsListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WCFServer" minOccurs="0" name="FilmsListResult" nillable="true" type="q1:ArrayOfFilm" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WCFServer" minOccurs="0" name="StoreFilmsListResult" nillable="true" type="q1:ArrayOfFilm" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -101,6 +101,35 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SetFilmStatusResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LibraryFilmsList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="user_id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LibraryFilmsListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WCFServer" minOccurs="0" name="LibraryFilmsListResult" nillable="true" type="q3:ArrayOfFilm" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReturnFilm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="user_id" type="xs:int" />
+        <xs:element minOccurs="0" name="film_id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReturnFilmResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ReturnFilmResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

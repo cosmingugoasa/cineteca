@@ -269,11 +269,11 @@ namespace cineteca.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/LoginUser", ReplyAction="http://tempuri.org/IServerServices/LoginUserResponse")]
         System.Threading.Tasks.Task<bool> LoginUserAsync(string email, string passw);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/FilmsList", ReplyAction="http://tempuri.org/IServerServices/FilmsListResponse")]
-        cineteca.ServiceReference.Film[] FilmsList();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/StoreFilmsList", ReplyAction="http://tempuri.org/IServerServices/StoreFilmsListResponse")]
+        cineteca.ServiceReference.Film[] StoreFilmsList();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/FilmsList", ReplyAction="http://tempuri.org/IServerServices/FilmsListResponse")]
-        System.Threading.Tasks.Task<cineteca.ServiceReference.Film[]> FilmsListAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/StoreFilmsList", ReplyAction="http://tempuri.org/IServerServices/StoreFilmsListResponse")]
+        System.Threading.Tasks.Task<cineteca.ServiceReference.Film[]> StoreFilmsListAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/GetUser", ReplyAction="http://tempuri.org/IServerServices/GetUserResponse")]
         cineteca.ServiceReference.Utente GetUser(string email);
@@ -292,6 +292,18 @@ namespace cineteca.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/SetFilmStatus", ReplyAction="http://tempuri.org/IServerServices/SetFilmStatusResponse")]
         System.Threading.Tasks.Task<bool> SetFilmStatusAsync(int film_id, bool disp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/LibraryFilmsList", ReplyAction="http://tempuri.org/IServerServices/LibraryFilmsListResponse")]
+        cineteca.ServiceReference.Film[] LibraryFilmsList(int user_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/LibraryFilmsList", ReplyAction="http://tempuri.org/IServerServices/LibraryFilmsListResponse")]
+        System.Threading.Tasks.Task<cineteca.ServiceReference.Film[]> LibraryFilmsListAsync(int user_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/ReturnFilm", ReplyAction="http://tempuri.org/IServerServices/ReturnFilmResponse")]
+        bool ReturnFilm(int user_id, int film_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/ReturnFilm", ReplyAction="http://tempuri.org/IServerServices/ReturnFilmResponse")]
+        System.Threading.Tasks.Task<bool> ReturnFilmAsync(int user_id, int film_id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -345,12 +357,12 @@ namespace cineteca.ServiceReference {
             return base.Channel.LoginUserAsync(email, passw);
         }
         
-        public cineteca.ServiceReference.Film[] FilmsList() {
-            return base.Channel.FilmsList();
+        public cineteca.ServiceReference.Film[] StoreFilmsList() {
+            return base.Channel.StoreFilmsList();
         }
         
-        public System.Threading.Tasks.Task<cineteca.ServiceReference.Film[]> FilmsListAsync() {
-            return base.Channel.FilmsListAsync();
+        public System.Threading.Tasks.Task<cineteca.ServiceReference.Film[]> StoreFilmsListAsync() {
+            return base.Channel.StoreFilmsListAsync();
         }
         
         public cineteca.ServiceReference.Utente GetUser(string email) {
@@ -375,6 +387,22 @@ namespace cineteca.ServiceReference {
         
         public System.Threading.Tasks.Task<bool> SetFilmStatusAsync(int film_id, bool disp) {
             return base.Channel.SetFilmStatusAsync(film_id, disp);
+        }
+        
+        public cineteca.ServiceReference.Film[] LibraryFilmsList(int user_id) {
+            return base.Channel.LibraryFilmsList(user_id);
+        }
+        
+        public System.Threading.Tasks.Task<cineteca.ServiceReference.Film[]> LibraryFilmsListAsync(int user_id) {
+            return base.Channel.LibraryFilmsListAsync(user_id);
+        }
+        
+        public bool ReturnFilm(int user_id, int film_id) {
+            return base.Channel.ReturnFilm(user_id, film_id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ReturnFilmAsync(int user_id, int film_id) {
+            return base.Channel.ReturnFilmAsync(user_id, film_id);
         }
     }
 }
