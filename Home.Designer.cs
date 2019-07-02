@@ -161,7 +161,9 @@
         private System.Windows.Forms.ToolStripMenuItem btn_logout;
 
         private System.Windows.Forms.ToolStrip toolStripMenu;
+        
         private System.Windows.Forms.ToolStripButton btn_refresh;
+        
         private System.Windows.Forms.ToolStripButton btn_add_film;
     }
 }
