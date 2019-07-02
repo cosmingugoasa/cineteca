@@ -116,6 +116,7 @@
             // 
             // btn_addFilm
             // 
+            this.btn_addFilm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_addFilm.BackColor = System.Drawing.Color.Gray;
             this.btn_addFilm.FlatAppearance.BorderSize = 0;
             this.btn_addFilm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

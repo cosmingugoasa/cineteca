@@ -30,7 +30,6 @@ namespace WCFServer
             try
             {
                 conn.Open();
-
                 string strQuery = "SELECT * FROM UTENTE where email = '" + email + "'";
                 MySqlCommand cmd = new MySqlCommand(strQuery, conn);
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -40,7 +39,6 @@ namespace WCFServer
                     myUtente = new Utente(Convert.ToInt32(reader["Id"]), reader["Email"].ToString(), reader["Passw"].ToString(), reader["Nome"].ToString(), reader["Cognome"].ToString(), Convert.ToBoolean(reader["IsAdmin"]));
                     return myUtente;
                 }
-
                 conn.Close();
                 return myUtente = new Utente();
             }
@@ -52,70 +50,77 @@ namespace WCFServer
         }
 
         public bool RegisterUser(string email, string passw, string nome, string cognome, int isAdmin) //Registrazione dell'utente su db
-        {
-            conn.Open();
-
-            if (conn.State == ConnectionState.Open)
+        {    
+            try
             {
-                Console.WriteLine("Connessione DB aperta\n");
-                try
+                conn.Open();
+                if (conn.State == ConnectionState.Open)
                 {
+                    Console.WriteLine("Connessione DB aperta\n");
                     string cmd_string = "INSERT INTO UTENTE (Email, Passw, Nome, Cognome, IsAdmin) VALUES ('" + email + "', '" + passw + "', '" + nome + "', '" + cognome + "', '" + isAdmin + "')";
                     MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    conn.Dispose();
-                    return true;
+                    if (cmd.ExecuteReader().HasRows) {
+
+                        conn.Close();
+                        conn.Dispose();
+                        return true;
+                    }
+                    else
+                    {
+                        conn.Close();
+                        conn.Dispose();
+                        Console.WriteLine("ERRORE REGISTRAZIONE\n");
+                        return false;
+                    }
+
                 }
-                catch (Exception ex)
+                else
                 {
-                    Console.WriteLine(ex.ToString());
-                    conn.Close();
-                    conn.Dispose();
+                    Console.WriteLine("Connessione DB fallita\n");
                     return false;
                 }
-                
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Connessione DB fallita\n");
+                Console.WriteLine(ex.ToString());
+                conn.Close();
+                conn.Dispose();
                 return false;
-            }
-
-            
+            }                
         }
 
 
         public bool LoginUser(string email, string passw)//Login dell'utente
         {
-            conn.Open();
-
-            if (conn.State == ConnectionState.Open)
-            {
-                Console.WriteLine("Connessione DB aperta\n");
-            }
-            else
-            {
-                Console.WriteLine("Connessione DB fallita\n");
-            }
-
             try
-            {   //Cerco sul DB se credenziali corrette
-                string Login_string = "SELECT * FROM UTENTE Where Email = '" + email + "' AND Passw = '" + passw +"'";
-                MySqlCommand cmd = new MySqlCommand(Login_string, conn);
+            {
+                conn.Open();
+                if (conn.State == ConnectionState.Open)
+                {
+                    Console.WriteLine("Connessione DB aperta\n");
 
-                if (cmd.ExecuteReader().HasRows) {
-                    conn.Close();
-                    conn.Dispose();
-                    return true;
+                    //Cerco sul DB se credenziali corrette
+                    string Login_string = "SELECT * FROM UTENTE Where Email = '" + email + "' AND Passw = '" + passw + "'";
+                    MySqlCommand cmd = new MySqlCommand(Login_string, conn);
+
+                    if (cmd.ExecuteReader().HasRows)
+                    {
+                        conn.Close();
+                        conn.Dispose();
+                        return true;
+                    }
+                    else
+                    {
+                        conn.Close();
+                        conn.Dispose();
+                        return false;
+                    }
                 }
-                else {
-                    conn.Close();
-                    conn.Dispose();
+                else
+                {
+                    Console.WriteLine("Connessione DB fallita\n");
                     return false;
                 }
-                    
-                
             }
             catch (Exception ex)
             {
@@ -127,24 +132,31 @@ namespace WCFServer
         }
 
         public List<Film> StoreFilmsList() //Ritorna lista di film dal DB da caricare nella home
-        {
-            conn.Open();
-
+        {     
             List<Film> films = new List<Film>();
 
             try
-            {  
-                string query = "SELECT * FROM FILM";
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+            {
+                conn.Open();
+                if (conn.State == ConnectionState.Open)
                 {
-                    Film film = new Film(Convert.ToInt32(reader.GetString(0)), reader.GetString(1), reader.GetString(2), Convert.ToBoolean(reader.GetString(3)), reader.GetString(4));
-                    films.Add(film);
+                    string query = "SELECT * FROM FILM";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Film film = new Film(Convert.ToInt32(reader.GetString(0)), reader.GetString(1), reader.GetString(2), Convert.ToBoolean(reader.GetString(3)), reader.GetString(4));
+                        films.Add(film);
+                    }
+                    conn.Close();
+                    conn.Dispose();
+                    return films;
                 }
-                conn.Close();
-                conn.Dispose();
-                return films;
+                else
+                {
+                    Console.WriteLine("Connessione DB fallita\n");
+                    return films;
+                }
             }
             catch (Exception ex)
             {
@@ -155,17 +167,24 @@ namespace WCFServer
             }
         }
 
-        public bool RentFilm(int user_id, int film_id, string start_nol, string stop_nol) {
-
-            conn.Open();
+        public bool RentFilm(int user_id, int film_id, string start_nol, string stop_nol) { //Restituire film noleggiato
 
             try
             {
-                string cmd_string = "INSERT INTO NOLEGGIO (IdUtente, IdFilm, InizioNoleggio, FineNoleggio) VALUES ('" + user_id + "', '" + film_id + "', '" + start_nol + "', '" + stop_nol + "')";
-                MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                return true;
+                conn.Open();
+                if (conn.State == ConnectionState.Open)
+                {
+                    string cmd_string = "INSERT INTO NOLEGGIO (IdUtente, IdFilm, InizioNoleggio, FineNoleggio) VALUES ('" + user_id + "', '" + film_id + "', '" + start_nol + "', '" + stop_nol + "')";
+                    MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Connessione DB fallita\n");
+                    return false;
+                }
             }
             catch (Exception ex)
             {
@@ -176,16 +195,24 @@ namespace WCFServer
         }
 
         public bool SetFilmStatus(int film_id, bool disp) { //Si rende indisponibile il film
-            conn.Open();
-
             try
             {
-                string cmd_string = "UPDATE FILM SET Disponibile = " + Convert.ToInt32(disp) + " WHERE FILM.Id = " + film_id + ";";
-                Console.WriteLine(cmd_string);
-                MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                return true;
+                conn.Open();
+                if (conn.State == ConnectionState.Open)
+                {
+                    string cmd_string = "UPDATE FILM SET Disponibile = " + Convert.ToInt32(disp) + " WHERE FILM.Id = " + film_id + ";";
+                    Console.WriteLine(cmd_string);
+                    MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Connessione DB fallita\n");
+                    Console.WriteLine();
+                    return false;
+                }
             }
             catch (Exception ex)
             {
@@ -196,24 +223,31 @@ namespace WCFServer
         }
 
         public List<Film> LibraryFilmsList(int user_id) {
-            conn.Open();
 
             List<Film> films = new List<Film>();
-
             try
             {
-                string query = "SELECT * FROM NOLEGGIO, FILM WHERE IdFilm = FILM.Id AND IdUtente = " + user_id;
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                conn.Open();
+                if (conn.State == ConnectionState.Open)
                 {
-                    Console.WriteLine(reader["IdFilm"] + " " + reader["Titolo"]);
-                    Film film = new Film(Convert.ToInt32(reader["IdFilm"]), reader["Titolo"].ToString(), reader["Descrizione"].ToString(), Convert.ToBoolean(reader["Disponibile"]), reader["UrlImage"].ToString());
-                    films.Add(film);
+                    string query = "SELECT * FROM NOLEGGIO, FILM WHERE IdFilm = FILM.Id AND IdUtente = " + user_id;
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Console.WriteLine(reader["IdFilm"] + " " + reader["Titolo"]);
+                        Film film = new Film(Convert.ToInt32(reader["IdFilm"]), reader["Titolo"].ToString(), reader["Descrizione"].ToString(), Convert.ToBoolean(reader["Disponibile"]), reader["UrlImage"].ToString());
+                        films.Add(film);
+                    }
+                    conn.Close();
+                    conn.Dispose();
+                    return films;
                 }
-                conn.Close();
-                conn.Dispose();
-                return films;
+                else{
+                    Console.WriteLine("Connessione DB fallita\n");
+                    return films;
+                }
+
             }
             catch (Exception ex)
             {
@@ -226,16 +260,21 @@ namespace WCFServer
 
         public bool ReturnFilm(int user_id, int film_id)
         {
-            conn.Open();
-
             try
             {
-                string cmd_delete = "DELETE FROM NOLEGGIO WHERE IdUtente = " + user_id + " AND IdFilm = " + film_id ;
-                MySqlCommand cmd = new MySqlCommand(cmd_delete, conn);
-                cmd.ExecuteNonQuery();
-                
-                conn.Close();
-                return true;
+                conn.Open();
+                if (conn.State == ConnectionState.Open)
+                {
+                    string cmd_delete = "DELETE FROM NOLEGGIO WHERE IdUtente = " + user_id + " AND IdFilm = " + film_id;
+                    MySqlCommand cmd = new MySqlCommand(cmd_delete, conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    return true;
+                }
+                else{
+                    Console.WriteLine("Connessione DB fallita\n");
+                    return false;
+                }
             }
             catch (Exception ex)
             {
