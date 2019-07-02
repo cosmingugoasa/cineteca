@@ -19,7 +19,7 @@ namespace cineteca
 
             if (utenteAttuale.isAdmin) //Se utente admin permetto di aggiungere film
             {
-                btn_addFilm.Visible = true;
+                btn_add_film.Visible = true;
             }
 
             LoadStore();    //Carico film
@@ -87,10 +87,20 @@ namespace cineteca
 
         private void btn_refresh_Click(object sender, EventArgs e)
         {
-            main_panel.Controls.Clear();
-            LoadStore();
+            if (btn_store.Enabled == false)
+            {
+                main_panel.Controls.Clear();
+                LoadStore();
+            }
+            else if (btn_library.Enabled == false) {
+                main_panel.Controls.Clear();
+                LoadLibrary();
+            }
+
+            
         }
 
+        /*
         private void btn_addFilm_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
@@ -100,7 +110,7 @@ namespace cineteca
             this.Enabled = true; //Chiudo tutto altrimenti rimane nascosto e non si chiude il programma
             btn_refresh_Click(this,e); //Richiamo funzione per fare refresh
 
-        }
+        }*/
 
         private void LoadLibrary() {
             main_panel.Controls.Clear();   //Ripuliamo Home dai film
@@ -142,5 +152,16 @@ namespace cineteca
             Form filmSpec = new FilmSpec(utenteAttuale, btn.Image, Convert.ToInt32(((Film)btn.Tag).id), ((Film)btn.Tag).titolo, ((Film)btn.Tag).descrizione);
             filmSpec.Show();
         }
+
+        private void btn_add_film_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            Form addFilm = new AddFilm();//Creiamo "addFilm" form
+
+            addFilm.ShowDialog();//Apro Home
+            this.Enabled = true; //Chiudo tutto altrimenti rimane nascosto e non si chiude il programma
+            btn_refresh_Click(this, e); //Richiamo funzione per fare refresh
+        }
     }
 }
+ 

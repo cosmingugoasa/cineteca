@@ -54,8 +54,11 @@ namespace cineteca
 
         private void btn_noleggia_Click(object sender, System.EventArgs e)
         {
-            DateTime date1 = new DateTime(2019, 07, 01);
-            DateTime date2 = new DateTime(2019, 08, 01);
+            DateTime date1;
+            date1 = DateTime.Today;
+            DateTime date2;
+            date2 = date1.AddMonths(1);
+
             if (wcfClient.RentFilm(utenteAttuale.id, film_id, date1.ToString("yyyy-MM-dd"), date2.ToString("yyyy-MM-dd")) && wcfClient.SetFilmStatus(film_id, false))
             {
                 MessageBox.Show("Film Noleggiato !");

@@ -1,13 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
 
 namespace WCFServer
 {
@@ -15,17 +9,14 @@ namespace WCFServer
     public class ServerServices : IServerServices
     {
         MySqlConnection conn = new MySqlConnection("Server=mysql-loca.alwaysdata.net;Database=loca_cineteca;Uid=loca;Pwd=prova98;");
-
-
+        
         public bool DoWork()        //usata solo per controllare connettivita' dal client 
         {
             return true;
         }
-
-
+        
         public Utente GetUser(string email) //Restituise Un oggetto utente contentente i dati dell'utente
         {
-
             Utente myUtente;
             try
             {
@@ -57,7 +48,6 @@ namespace WCFServer
 
             if (conn.State == ConnectionState.Open)
             {
-                Console.WriteLine("Connessione DB aperta\n");
                 try
                 {
                     string cmd_string = "INSERT INTO UTENTE (Email, Passw, Nome, Cognome, IsAdmin) VALUES ('" + email + "', '" + passw + "', '" + nome + "', '" + cognome + "', '" + isAdmin + "')";
@@ -81,24 +71,12 @@ namespace WCFServer
                 Console.WriteLine("Connessione DB fallita\n");
                 return false;
             }
-
-            
         }
-
-
+        
         public bool LoginUser(string email, string passw)//Login dell'utente
         {
             conn.Open();
-
-            if (conn.State == ConnectionState.Open)
-            {
-                Console.WriteLine("Connessione DB aperta\n");
-            }
-            else
-            {
-                Console.WriteLine("Connessione DB fallita\n");
-            }
-
+            
             try
             {   //Cerco sul DB se credenziali corrette
                 string Login_string = "SELECT * FROM UTENTE Where Email = '" + email + "' AND Passw = '" + passw +"'";
@@ -114,8 +92,6 @@ namespace WCFServer
                     conn.Dispose();
                     return false;
                 }
-                    
-                
             }
             catch (Exception ex)
             {
@@ -181,7 +157,6 @@ namespace WCFServer
             try
             {
                 string cmd_string = "UPDATE FILM SET Disponibile = " + Convert.ToInt32(disp) + " WHERE FILM.Id = " + film_id + ";";
-                Console.WriteLine(cmd_string);
                 MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
                 cmd.ExecuteNonQuery();
                 conn.Close();
@@ -207,7 +182,6 @@ namespace WCFServer
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    Console.WriteLine(reader["IdFilm"] + " " + reader["Titolo"]);
                     Film film = new Film(Convert.ToInt32(reader["IdFilm"]), reader["Titolo"].ToString(), reader["Descrizione"].ToString(), Convert.ToBoolean(reader["Disponibile"]), reader["UrlImage"].ToString());
                     films.Add(film);
                 }
@@ -252,9 +226,7 @@ namespace WCFServer
                 conn.Open();
                 if (conn.State == ConnectionState.Open)
                 {
-                    Console.WriteLine("Connessione DB aperta\n");
                     string cmd_string = "INSERT INTO FILM (Titolo, Descrizione, Disponibile, UrlImage) VALUES ('" + titolo + "', '" + descrizione + "', " + disponibile + ", '" + url_image + "')";
-                    Console.WriteLine(cmd_string);
                     MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
                     
                     if (cmd.ExecuteNonQuery() > 0)
@@ -263,13 +235,11 @@ namespace WCFServer
                         conn.Dispose();
                         return true;
                     }
-
                     else{
                         conn.Close();
                         conn.Dispose();
                         return false;
                     }
-
                 }
                 else
                 {
@@ -286,7 +256,6 @@ namespace WCFServer
                 conn.Close();
                 return false;
             }
-
         }
 
     }

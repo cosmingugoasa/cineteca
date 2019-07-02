@@ -146,6 +146,8 @@
             this.Controls.Add(this.btn_login);
             this.Controls.Add(this.tb_password_login);
             this.Controls.Add(this.tb_email_login);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.Text = "Login Form";
             this.ResumeLayout(false);
