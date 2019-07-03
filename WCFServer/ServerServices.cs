@@ -38,7 +38,6 @@ namespace WCFServer
             }
             finally
             {
-                Console.WriteLine("Culo");
                 conn.Close();
             }
         }
@@ -330,5 +329,37 @@ namespace WCFServer
             }
         }
 
+        public bool GetFilmDisp(int film_id) {
+            bool status = false;
+            try
+            {
+                conn.Open();
+                if (conn.State == ConnectionState.Open)
+                {
+                    string cmd_string = "SELECT * FROM FILM WHERE Id = " + film_id;
+                    MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        if (reader["Disponibile"].ToString() == "True")
+                        {
+                            status = true;
+                        }
+                    }
+                    conn.Close();
+                    return status;
+                }
+                else
+                {
+                    return status = false; ;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                conn.Close();
+                return status = false; ;
+            }
+        }
     }
 }

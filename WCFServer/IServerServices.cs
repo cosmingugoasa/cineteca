@@ -37,5 +37,8 @@ namespace WCFServer
 
         [OperationContract]
         bool InsertFilm(string titolo, string descrizione, bool disponibile, string url_image);
+
+        [OperationContract]
+        bool GetFilmDisp(int film_id);
     }
 }

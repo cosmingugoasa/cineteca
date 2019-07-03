@@ -310,6 +310,12 @@ namespace cineteca.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/InsertFilm", ReplyAction="http://tempuri.org/IServerServices/InsertFilmResponse")]
         System.Threading.Tasks.Task<bool> InsertFilmAsync(string titolo, string descrizione, bool disponibile, string url_image);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/GetFilmDisp", ReplyAction="http://tempuri.org/IServerServices/GetFilmDispResponse")]
+        bool GetFilmDisp(int film_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/GetFilmDisp", ReplyAction="http://tempuri.org/IServerServices/GetFilmDispResponse")]
+        System.Threading.Tasks.Task<bool> GetFilmDispAsync(int film_id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -417,6 +423,14 @@ namespace cineteca.ServiceReference {
         
         public System.Threading.Tasks.Task<bool> InsertFilmAsync(string titolo, string descrizione, bool disponibile, string url_image) {
             return base.Channel.InsertFilmAsync(titolo, descrizione, disponibile, url_image);
+        }
+        
+        public bool GetFilmDisp(int film_id) {
+            return base.Channel.GetFilmDisp(film_id);
+        }
+        
+        public System.Threading.Tasks.Task<bool> GetFilmDispAsync(int film_id) {
+            return base.Channel.GetFilmDispAsync(film_id);
         }
     }
 }

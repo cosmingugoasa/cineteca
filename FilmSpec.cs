@@ -52,23 +52,31 @@ namespace cineteca
 
         }
 
-        private void btn_noleggia_Click(object sender, System.EventArgs e)
+        private void btn_noleggia_Click(object sender, EventArgs e)
         {
             DateTime date1;
             date1 = DateTime.Today;
             DateTime date2;
             date2 = date1.AddMonths(1);
 
-            if (wcfClient.RentFilm(utenteAttuale.id, film_id, date1.ToString("yyyy-MM-dd"), date2.ToString("yyyy-MM-dd")) && wcfClient.SetFilmStatus(film_id, false))
+            if (wcfClient.GetFilmDisp(film_id))
             {
-                MessageBox.Show("Film Noleggiato !");
-                Close();
+                if (wcfClient.RentFilm(utenteAttuale.id, film_id, date1.ToString("yyyy-MM-dd"), date2.ToString("yyyy-MM-dd")) && wcfClient.SetFilmStatus(film_id, false))
+                {
+                    MessageBox.Show("Film Noleggiato !");
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Errore nel Noleggiare !");
+                    Close();
+                }
             }
-            else
-            {
+            else {
                 MessageBox.Show("Errore nel Noleggiare !");
                 Close();
             }
+            
         }
 
         private void btn_restituisci_Click(object sender, EventArgs e)
