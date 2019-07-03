@@ -1,12 +1,6 @@
 ﻿using cineteca.ServiceReference;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace cineteca
@@ -39,8 +33,8 @@ namespace cineteca
         {
             if (tb_register_password.Text.Equals(tb_register_repeat_password.Text))
             {
-                int root = 0;                                       //Variabile se Utente ROOT
-                if (tb_register_admin_code.Text == "root")          //Controllo TextBox
+                int root = 0;                                       //Variabile per essere Utente ROOT
+                if (tb_register_admin_code.Text == "root")          //Controllo codice
                     root = 1;
 
                 //Chiamata al servizio per registrazione Utente
@@ -48,12 +42,12 @@ namespace cineteca
                 {
                     l_operation_status.Text = "User admin added";
 
-                    Utente myUtente = wcfClient.GetUser(tb_register_email.Text);//Oggetto utente con credenziali
+                    Utente myUtente = wcfClient.GetUser(tb_register_email.Text);        //Oggetto utente con credenziali
 
-                    Form homeForm = new Home(myUtente);//Creiamo HomeForm e passaimo oggetto utente    
-                    this.Hide(); //nascondo RegForm
+                    Form homeForm = new Home(myUtente);                                 //Creiamo HomeForm e passaimo oggetto utente    
+                    this.Hide();                                                        //nascondo RegForm
                     homeForm.ShowDialog();
-                    this.Close(); //Chiudo il nascosto RegForm
+                    this.Close();                                                       //Chiudo il nascosto RegForm
 
                 }
                 else
@@ -62,7 +56,9 @@ namespace cineteca
                 }
             }
             else
+            {
                 l_operation_status.Text = "Password don't match";
+            }  
         }
     }
 }

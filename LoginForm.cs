@@ -15,7 +15,7 @@ namespace cineteca
     public partial class LoginForm : Form
     {
         ServerServicesClient wcfClient = new ServerServicesClient();       //creo istanza del client
-        Form regForm = new RegisterForm();                                                  //riferimento al form di registrazione         
+        Form regForm = new RegisterForm();                                 //riferimento al form di registrazione         
 
         public LoginForm()
         {
@@ -39,15 +39,15 @@ namespace cineteca
         private void btn_login_Click(object sender, EventArgs e)
         {   
 
-            if (wcfClient.LoginUser(tb_email_login.Text,tb_password_login.Text))//controllo se credenziali corrette
+            if (wcfClient.LoginUser(tb_email_login.Text,tb_password_login.Text))        //controllo se credenziali corrette
             {
                 OperationStatus.Text = "Login completed";
                
-                Form homeForm = new Home(wcfClient.GetUser(tb_email_login.Text));//Creiamo HomeForm e passaimo oggetto utente
+                Form homeForm = new Home(wcfClient.GetUser(tb_email_login.Text));       //Creiamo HomeForm e passiamo oggetto utente
                 
-                this.Hide(); //nascondo LoginForm
-                homeForm.ShowDialog();//Apro Home
-                this.Close(); //Chiudo tutto altrimenti rimane nascosto e non si chiude il programma
+                this.Hide();        //nascondo LoginForm
+                homeForm.ShowDialog();      //Apro Home
+                this.Close();       //Chiudo tutto altrimenti rimane nascosto e non si chiude il programma
             }
             else
             {
