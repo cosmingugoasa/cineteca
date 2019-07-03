@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using cineteca.ServiceReference; // includo servizi di referenza
 
 namespace cineteca
 {
-    static class Program
+    class Program
     {
         /// <summary>
         /// The main entry point for the application.
@@ -16,7 +17,10 @@ namespace cineteca
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Cineteca());
+            /*Utente test = new Utente();
+            test.email = "user@test.com";
+            Application.Run(new Home(test));*/
+            Application.Run(new LoginForm());
         }
     }
 }
