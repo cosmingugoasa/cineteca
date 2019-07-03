@@ -80,3 +80,4 @@ C:\Users\Mattia\Desktop\cineteca\obj\Debug\cineteca.AddFilm.resources
 C:\Users\cosmi\Documents\Uni\TecnicheSviluppoAmbienteIndustriale\cineteca\obj\Debug\cineteca.AddFilm.resources
 C:\Users\Locas\Desktop\cineteca\obj\Debug\cineteca.AddFilm.resources
 C:\Users\Locas\Desktop\cineteca\obj\Debug\cineteca.FilmSpec.resources
+C:\Users\Mattia\Desktop\cineteca\obj\Debug\cineteca.RemoveFilm.resources

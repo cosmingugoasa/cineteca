@@ -67,6 +67,8 @@ namespace cineteca
 
                         //assegno oggetto film al bottone
                         btn.Tag = film;
+                        if (film.disponibile == false)
+                            btn.Enabled = false;
                         main_panel.Controls.Add(btn);
                     }
 
@@ -183,7 +185,16 @@ namespace cineteca
             Form addFilm = new AddFilm();//Creiamo "addFilm" form
 
             addFilm.ShowDialog();//Apro Home
-            this.Enabled = true; //Chiudo tutto altrimenti rimane nascosto e non si chiude il programma
+            this.Enabled = true;
+            btn_refresh_Click(this, e); //Richiamo funzione per fare refresh
+        }
+
+        private void btn_remove_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;//disabilito home
+            Form removeFilm = new RemoveFilm();//Creiamo "RemoveFilm" form
+            removeFilm.ShowDialog();
+            this.Enabled = true;//abilito home
             btn_refresh_Click(this, e); //Richiamo funzione per fare refresh
         }
     }

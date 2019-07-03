@@ -144,6 +144,7 @@
             this.btn_remove.Name = "btn_remove";
             this.btn_remove.Size = new System.Drawing.Size(180, 22);
             this.btn_remove.Text = "Remove Film";
+            this.btn_remove.Click += new System.EventHandler(this.btn_remove_Click);
             // 
             // Home
             // 

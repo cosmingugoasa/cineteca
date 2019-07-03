@@ -67,6 +67,12 @@
   <wsdl:message name="IServerServices_InsertFilm_OutputMessage">
     <wsdl:part name="parameters" element="tns:InsertFilmResponse" />
   </wsdl:message>
+  <wsdl:message name="IServerServices_RemoveFilm_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveFilm" />
+  </wsdl:message>
+  <wsdl:message name="IServerServices_RemoveFilm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveFilmResponse" />
+  </wsdl:message>
   <wsdl:message name="IServerServices_GetFilmDisp_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFilmDisp" />
   </wsdl:message>
@@ -113,6 +119,10 @@
     <wsdl:operation name="InsertFilm">
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/InsertFilm" message="tns:IServerServices_InsertFilm_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/InsertFilmResponse" message="tns:IServerServices_InsertFilm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveFilm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/RemoveFilm" message="tns:IServerServices_RemoveFilm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServerServices/RemoveFilmResponse" message="tns:IServerServices_RemoveFilm_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetFilmDisp">
       <wsdl:input wsaw:Action="http://tempuri.org/IServerServices/GetFilmDisp" message="tns:IServerServices_GetFilmDisp_InputMessage" />
@@ -204,6 +214,15 @@
     </wsdl:operation>
     <wsdl:operation name="InsertFilm">
       <soap:operation soapAction="http://tempuri.org/IServerServices/InsertFilm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveFilm">
+      <soap:operation soapAction="http://tempuri.org/IServerServices/RemoveFilm" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

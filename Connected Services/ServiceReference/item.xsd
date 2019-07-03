@@ -150,6 +150,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RemoveFilm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="titolo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveFilmResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RemoveFilmResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetFilmDisp">
     <xs:complexType>
       <xs:sequence>

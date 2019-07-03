@@ -330,6 +330,53 @@ namespace WCFServer
             }
         }
 
+        public bool RemoveFilm(string titolo)   //Elimina film nel DB
+        { 
+            try
+            {
+                conn.Open();
+                if (conn.State == ConnectionState.Open)
+                {
+                    MySqlTransaction transaction = conn.BeginTransaction();
+                    string cmd_string = "DELETE FROM FILM WHERE Titolo = '" + titolo +"'" ;
+                    MySqlCommand cmd = new MySqlCommand(cmd_string, conn, transaction);
+
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.ToString());
+                        transaction.Rollback();
+                        return false;
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("Connessione DB fallita\n");
+                    conn.Close();
+                    conn.Dispose();
+                    return false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                conn.Close();
+                return false;
+            }
+        }
+
+
         public bool GetFilmDisp(int film_id) {
             bool status = false;
             try

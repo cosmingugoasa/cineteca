@@ -311,6 +311,12 @@ namespace cineteca.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/InsertFilm", ReplyAction="http://tempuri.org/IServerServices/InsertFilmResponse")]
         System.Threading.Tasks.Task<bool> InsertFilmAsync(string titolo, string descrizione, bool disponibile, string url_image);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/RemoveFilm", ReplyAction="http://tempuri.org/IServerServices/RemoveFilmResponse")]
+        bool RemoveFilm(string titolo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/RemoveFilm", ReplyAction="http://tempuri.org/IServerServices/RemoveFilmResponse")]
+        System.Threading.Tasks.Task<bool> RemoveFilmAsync(string titolo);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerServices/GetFilmDisp", ReplyAction="http://tempuri.org/IServerServices/GetFilmDispResponse")]
         bool GetFilmDisp(int film_id);
         
@@ -423,6 +429,14 @@ namespace cineteca.ServiceReference {
         
         public System.Threading.Tasks.Task<bool> InsertFilmAsync(string titolo, string descrizione, bool disponibile, string url_image) {
             return base.Channel.InsertFilmAsync(titolo, descrizione, disponibile, url_image);
+        }
+        
+        public bool RemoveFilm(string titolo) {
+            return base.Channel.RemoveFilm(titolo);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RemoveFilmAsync(string titolo) {
+            return base.Channel.RemoveFilmAsync(titolo);
         }
         
         public bool GetFilmDisp(int film_id) {
