@@ -298,8 +298,8 @@ namespace WCFServer
             }
         }
 
-        public bool InsertFilm(string titolo, string descrizione, bool disponibile, string url_image)
-        { //Inserisce film nel DB 
+        public bool InsertFilm(string titolo, string descrizione, bool disponibile, string url_image) //Inserisce film nel DB 
+        { 
 
             try
             {
@@ -366,7 +366,6 @@ namespace WCFServer
                     {
                         conn.Close();
                     }
-
                 }
                 else
                 {
@@ -384,7 +383,6 @@ namespace WCFServer
                 return false;
             }
         }
-
 
         public bool GetFilmDisp(int film_id)
         {
