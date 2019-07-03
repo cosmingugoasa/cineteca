@@ -50,12 +50,10 @@ namespace WCFServer
                 conn.Open();
                 if (conn.State == ConnectionState.Open)
                 {
-                    Console.WriteLine("Connessione DB aperta\n");
                     string cmd_string = "INSERT INTO UTENTE (Email, Passw, Nome, Cognome, IsAdmin) VALUES ('" + email + "', '" + passw + "', '" + nome + "', '" + cognome + "', '" + isAdmin + "')";
                     MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
-                    if (cmd.ExecuteReader().HasRows)
+                    if (cmd.ExecuteNonQuery() > 0)
                     {
-
                         conn.Close();
                         conn.Dispose();
                         return true;
@@ -91,13 +89,12 @@ namespace WCFServer
                 conn.Open();
                 if (conn.State == ConnectionState.Open)
                 {
-                    Console.WriteLine("Connessione DB aperta\n");
-
                     //Cerco sul DB se credenziali corrette 
-                    string Login_string = "SELECT * FROM UTENTE Where Email = '" + email + "' AND Passw = '" + passw + "'";
-                    MySqlCommand cmd = new MySqlCommand(Login_string, conn);
+                    string login_string = "SELECT * FROM UTENTE Where Email = '" + email + "' AND Passw = '" + passw + "'";
+                    MySqlCommand cmd = new MySqlCommand(login_string, conn);
+                    MySqlDataReader reader = cmd.ExecuteReader();
 
-                    if (cmd.ExecuteReader().HasRows)
+                    if (reader.HasRows)
                     {
                         conn.Close();
                         conn.Dispose();
@@ -212,7 +209,6 @@ namespace WCFServer
                 if (conn.State == ConnectionState.Open)
                 {
                     string cmd_string = "UPDATE FILM SET Disponibile = " + Convert.ToInt32(disp) + " WHERE FILM.Id = " + film_id + ";";
-                    Console.WriteLine(cmd_string);
                     MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
                     cmd.ExecuteNonQuery();
                     conn.Close();
@@ -247,7 +243,6 @@ namespace WCFServer
                     MySqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        Console.WriteLine(reader["IdFilm"] + " " + reader["Titolo"]);
                         Film film = new Film(Convert.ToInt32(reader["IdFilm"]), reader["Titolo"].ToString(), reader["Descrizione"].ToString(), Convert.ToBoolean(reader["Disponibile"]), reader["UrlImage"].ToString());
                         films.Add(film);
                     }

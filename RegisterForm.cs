@@ -40,7 +40,7 @@ namespace cineteca
                 //Chiamata al servizio per registrazione Utente
                 if (wcfClient.RegisterUser(tb_register_email.Text, tb_register_password.Text, tb_register_name.Text, tb_register_surname.Text, root))
                 {
-                    l_operation_status.Text = "User admin added";
+                    l_operation_status.Text = "User added";
 
                     Utente myUtente = wcfClient.GetUser(tb_register_email.Text);        //Oggetto utente con credenziali
 
