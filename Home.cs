@@ -87,7 +87,8 @@ namespace cineteca
         private void filmButton_Store_click(object sender, EventArgs e) {
             Button btn = sender as Button;
             Form filmSpec = new FilmSpec(utenteAttuale, btn.Image, Convert.ToInt32(((Film)btn.Tag).id), ((Film)btn.Tag).titolo, ((Film)btn.Tag).descrizione, ((Film)btn.Tag).disponibile);
-            filmSpec.Show();
+            filmSpec.ShowDialog();
+            this.LoadStore();
         }
 
         private void btn_library_Click_1(object sender, EventArgs e)
@@ -172,7 +173,8 @@ namespace cineteca
         {
             Button btn = sender as Button;
             Form filmSpec = new FilmSpec(utenteAttuale, btn.Image, Convert.ToInt32(((Film)btn.Tag).id), ((Film)btn.Tag).titolo, ((Film)btn.Tag).descrizione);
-            filmSpec.Show();
+            filmSpec.ShowDialog();
+            this.LoadLibrary();
         }
 
         private void addFilmToolStripMenuItem_Click(object sender, EventArgs e)
