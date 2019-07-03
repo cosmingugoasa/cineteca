@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 
 namespace WCFServer
@@ -8,7 +9,7 @@ namespace WCFServer
     // NOTA: è possibile utilizzare il comando "Rinomina" del menu "Refactoring" per modificare il nome di classe "ServerServices" nel codice e nel file di configurazione contemporaneamente.
     public class ServerServices : IServerServices
     {
-        MySqlConnection conn = new MySqlConnection("Server=mysql-loca.alwaysdata.net;Database=loca_cineteca;Uid=loca;Pwd=prova98;");
+        MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["cs"].ConnectionString);
         
         public bool DoWork()        //usata solo per controllare connettivita' dal client 
         {

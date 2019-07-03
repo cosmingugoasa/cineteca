@@ -21,7 +21,7 @@ namespace cineteca
 
             if (utenteAttuale.isAdmin) //Se utente admin permetto di aggiungere film
             {
-                btn_add_film.Visible = true;
+                btn_manage.Visible = true;
             }
 
             LoadStore();    //Carico film
@@ -116,19 +116,7 @@ namespace cineteca
 
             
         }
-
-        /*
-        private void btn_addFilm_Click(object sender, EventArgs e)
-        {
-            this.Enabled = false;   //Disabilitiamo home
-            Form addFilm = new AddFilm();//Creiamo "addFilm" form
-
-            addFilm.ShowDialog();//Apro Home
-            this.Enabled = true; //Chiudo tutto altrimenti rimane nascosto e non si chiude il programma
-            btn_refresh_Click(this,e); //Richiamo funzione per fare refresh
-
-        }*/
-
+        
         private void LoadLibrary() {
             try
             {
@@ -169,14 +157,14 @@ namespace cineteca
                     }
                 }
                 else {
-                    System.Windows.Forms.MessageBox.Show("NON HAI NOLEGGIATO NESSUN FILM");
+                    MessageBox.Show("NON HAI NOLEGGIATO NESSUN FILM");
                 }
 
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                System.Windows.Forms.MessageBox.Show("NESSUN FILM DISPONIBILE AL MOMENTO, PROVA IL REFRESH");
+                MessageBox.Show("NESSUN FILM DISPONIBILE AL MOMENTO, PROVA IL REFRESH");
             }
         }
 
@@ -187,7 +175,7 @@ namespace cineteca
             filmSpec.Show();
         }
 
-        private void btn_add_film_Click(object sender, EventArgs e)
+        private void addFilmToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
             Form addFilm = new AddFilm();//Creiamo "addFilm" form

@@ -36,7 +36,9 @@
             this.btn_profile = new System.Windows.Forms.ToolStripDropDownButton();
             this.btn_logout = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_refresh = new System.Windows.Forms.ToolStripButton();
-            this.btn_add_film = new System.Windows.Forms.ToolStripButton();
+            this.btn_manage = new System.Windows.Forms.ToolStripDropDownButton();
+            this.btn_add_film = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_remove = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +59,7 @@
             this.btn_library,
             this.btn_profile,
             this.btn_refresh,
-            this.btn_add_film});
+            this.btn_manage});
             this.toolStripMenu.Location = new System.Drawing.Point(0, 0);
             this.toolStripMenu.Name = "toolStripMenu";
             this.toolStripMenu.Size = new System.Drawing.Size(766, 40);
@@ -116,18 +118,32 @@
             this.btn_refresh.Text = "refresh";
             this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
             // 
+            // btn_manage
+            // 
+            this.btn_manage.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btn_manage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btn_manage.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btn_add_film,
+            this.btn_remove});
+            this.btn_manage.Image = ((System.Drawing.Image)(resources.GetObject("btn_manage.Image")));
+            this.btn_manage.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_manage.Margin = new System.Windows.Forms.Padding(10);
+            this.btn_manage.Name = "btn_manage";
+            this.btn_manage.Size = new System.Drawing.Size(63, 20);
+            this.btn_manage.Text = "Manage";
+            // 
             // btn_add_film
             // 
-            this.btn_add_film.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btn_add_film.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btn_add_film.Image = ((System.Drawing.Image)(resources.GetObject("btn_add_film.Image")));
-            this.btn_add_film.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_add_film.Margin = new System.Windows.Forms.Padding(10);
             this.btn_add_film.Name = "btn_add_film";
-            this.btn_add_film.Size = new System.Drawing.Size(59, 20);
+            this.btn_add_film.Size = new System.Drawing.Size(180, 22);
             this.btn_add_film.Text = "Add Film";
-            this.btn_add_film.Visible = false;
-            this.btn_add_film.Click += new System.EventHandler(this.btn_add_film_Click);
+            this.btn_add_film.Click += new System.EventHandler(this.addFilmToolStripMenuItem_Click);
+            // 
+            // btn_remove
+            // 
+            this.btn_remove.Name = "btn_remove";
+            this.btn_remove.Size = new System.Drawing.Size(180, 22);
+            this.btn_remove.Text = "Remove Film";
             // 
             // Home
             // 
@@ -163,7 +179,8 @@
         private System.Windows.Forms.ToolStrip toolStripMenu;
         
         private System.Windows.Forms.ToolStripButton btn_refresh;
-        
-        private System.Windows.Forms.ToolStripButton btn_add_film;
+        private System.Windows.Forms.ToolStripDropDownButton btn_manage;
+        private System.Windows.Forms.ToolStripMenuItem btn_add_film;
+        private System.Windows.Forms.ToolStripMenuItem btn_remove;
     }
 }
