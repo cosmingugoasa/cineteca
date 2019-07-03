@@ -7,17 +7,17 @@ namespace WCFServer
     public class Utente
     {
         [DataMember]
-        private int id { get; }
+        private int id { get; set; }
         [DataMember]
-        private String nome { get; }
+        private String nome { get; set; }
         [DataMember]
-        private String cognome { get; }
+        private String cognome { get; set; }
         [DataMember]
-        private String email { get; }
+        private String email { get; set; }
         [DataMember]
-        private String password { get; }
+        private String password { get; set; }
         [DataMember]
-        private bool isAdmin { get; }
+        private bool isAdmin { get; set; }
 
         public Utente() {}      //costruttore vuoto
 

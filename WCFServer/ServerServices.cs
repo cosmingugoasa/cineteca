@@ -420,5 +420,3 @@ namespace WCFServer
     }
 }
 
-
-//ULTIMA VERSIONE FUNZIONANTE DAX

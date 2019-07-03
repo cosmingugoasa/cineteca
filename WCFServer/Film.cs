@@ -6,15 +6,15 @@ namespace WCFServer
     public class Film
     {
         [DataMember]
-        int id { get; }
+        int id { get; set; }
         [DataMember]
-        string titolo { get; }
+        string titolo { get; set; }
         [DataMember]
-        string descrizione { get; }
+        string descrizione { get; set; }
         [DataMember]
-        bool disponibile { get; }
+        bool disponibile { get; set; }
         [DataMember]
-        string url_image { get; }
+        string url_image { get; set; }
 
         public Film(int myId, string myTitolo, string myDescrizione, bool myDisp, string myUrl)
         {
