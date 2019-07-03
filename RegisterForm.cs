@@ -48,7 +48,6 @@ namespace cineteca
                     this.Hide();                                                        //nascondo RegForm
                     homeForm.ShowDialog();
                     this.Close();                                                       //Chiudo il nascosto RegForm
-
                 }
                 else
                 {
