@@ -41,7 +41,7 @@ namespace cineteca
                 List<Film> films = wcfClient.StoreFilmsList().ToList();
                 if (films.Count() != 0)
                 {
-                    foreach (Film film in wcfClient.StoreFilmsList())
+                    foreach (Film film in films)
                     {
                         //creo bottone + handler
                         Button btn = new Button();
@@ -74,12 +74,12 @@ namespace cineteca
                     btn_library.Enabled = true;
                 }
                 else
-                    System.Windows.Forms.MessageBox.Show("NESSUN FILM DISPONIBILE");
+                    MessageBox.Show("NESSUN FILM DISPONIBILE");
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                System.Windows.Forms.MessageBox.Show("NESSUN FILM DISPONIBILE AL MOMENTO, PROVA IL REFRESH");
+                MessageBox.Show("NESSUN FILM DISPONIBILE AL MOMENTO, PROVA IL REFRESH");
             }
         }
 

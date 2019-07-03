@@ -17,7 +17,7 @@ namespace WCFServer
         
         public Utente GetUser(string email) //Restituise Un oggetto utente contentente i dati dell'utente
         {
-            Utente myUtente;
+            Utente myUtente = new Utente();
             try
             {
                 conn.Open();
@@ -28,15 +28,18 @@ namespace WCFServer
                 while (reader.Read())
                 {
                     myUtente = new Utente(Convert.ToInt32(reader["Id"]), reader["Email"].ToString(), reader["Passw"].ToString(), reader["Nome"].ToString(), reader["Cognome"].ToString(), Convert.ToBoolean(reader["IsAdmin"]));
-                    return myUtente;
                 }
-                conn.Close();
-                return myUtente = new Utente();
+                return myUtente;
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.ToString());
+                return myUtente;
+            }
+            finally
+            {
+                Console.WriteLine("Culo");
                 conn.Close();
-                return myUtente = new Utente();
             }
         }
 
@@ -164,10 +167,24 @@ namespace WCFServer
                 conn.Open();
                 if (conn.State == ConnectionState.Open)
                 {
+                    MySqlTransaction transaction = conn.BeginTransaction();
                     string cmd_string = "INSERT INTO NOLEGGIO (IdUtente, IdFilm, InizioNoleggio, FineNoleggio) VALUES ('" + user_id + "', '" + film_id + "', '" + start_nol + "', '" + stop_nol + "')";
-                    MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
+                    MySqlCommand cmd = new MySqlCommand(cmd_string, conn, transaction);
+
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        transaction.Commit();
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.ToString());
+                        transaction.Rollback();
+                    }
+                    finally {
+                        conn.Close();
+                    }
+                                        
                     return true;
                 }
                 else

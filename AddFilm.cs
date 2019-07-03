@@ -30,7 +30,7 @@ namespace cineteca
             {
                 if(wcfClient.InsertFilm(tb_titolo.Text, tb_descrizone.Text, cb_disponibile.Checked, tb_urlCopertina.Text))
                 {
-                    System.Windows.Forms.MessageBox.Show("FILM INSERITO CORRETTAMENTE");
+                    MessageBox.Show("FILM INSERITO CORRETTAMENTE");
                     tb_titolo.Clear();
                     tb_descrizone.Clear();
                     cb_disponibile.Checked = false;
@@ -38,12 +38,12 @@ namespace cineteca
                 }
                 else
                 {
-                    System.Windows.Forms.MessageBox.Show("ERRORE PARAMETRI NON CORRETTI, RIPROVA");
+                    MessageBox.Show("ERRORE PARAMETRI NON CORRETTI, RIPROVA");
                 }
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.ToString());
             }
         }
     }
