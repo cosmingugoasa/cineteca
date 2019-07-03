@@ -323,6 +323,52 @@ namespace WCFServer
             }
         }
 
+        public bool RemoveFilm(string titolo)   //Elimina film nel DB
+        { 
+            try
+                conn.Open();
+            {
+                {
+                if (conn.State == ConnectionState.Open)
+                    MySqlTransaction transaction = conn.BeginTransaction();
+                    MySqlCommand cmd = new MySqlCommand(cmd_string, conn, transaction);
+                    string cmd_string = "DELETE FROM FILM WHERE Titolo = '" + titolo +"'" ;
+                    try
+
+                    {
+                        cmd.ExecuteNonQuery();
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch (Exception e)
+                    {
+                        transaction.Rollback();
+                        Console.WriteLine(e.ToString());
+                        return false;
+                    finally
+                    }
+                    {
+                        conn.Close();
+
+                    }
+                else
+                }
+                    conn.Close();
+                    Console.WriteLine("Connessione DB fallita\n");
+                {
+                    conn.Dispose();
+                }
+            }
+                    return false;
+
+            catch (Exception ex)
+                Console.WriteLine(ex.ToString());
+            {
+                conn.Close();
+            }
+                return false;
+        }
+
         public bool GetFilmDisp(int film_id) {          //controllo se il film e' disponibile per il noleggio
             bool status = false;
             try
