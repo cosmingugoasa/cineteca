@@ -68,8 +68,6 @@ namespace cineteca
 
                         //assegno oggetto film al bottone
                         btn.Tag = film;
-                        if (film.disponibile == false)
-                            btn.Enabled = false;
                         main_panel.Controls.Add(btn);
                     }
 
@@ -96,7 +94,6 @@ namespace cineteca
             Button btn = sender as Button;
             Form filmSpec = new FilmSpec(utenteAttuale, btn.Image, Convert.ToInt32(((Film)btn.Tag).id), ((Film)btn.Tag).titolo, ((Film)btn.Tag).descrizione, ((Film)btn.Tag).disponibile);
             filmSpec.ShowDialog();
-            this.LoadStore();
         }
 
         private void btn_library_Click_1(object sender, EventArgs e)
@@ -183,7 +180,7 @@ namespace cineteca
             this.LoadLibrary();
         }
 
-
+        //addFIlm button
         private void addFilmToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
@@ -196,11 +193,11 @@ namespace cineteca
 
         private void btn_remove_Click(object sender, EventArgs e)
         {
-            this.Enabled = false;//disabilito home
-            Form removeFilm = new RemoveFilm();//Creiamo "RemoveFilm" form
+            this.Enabled = false;                   //disabilito home
+            Form removeFilm = new RemoveFilm();     //Creiamo "RemoveFilm" form
             removeFilm.ShowDialog();
-            this.Enabled = true;//abilito home
-            btn_refresh_Click(this, e); //Richiamo funzione per fare refresh
+            this.Enabled = true;                    //abilito home
+            btn_refresh_Click(this, e);             //Richiamo funzione per fare refresh
         }
     }
 }
