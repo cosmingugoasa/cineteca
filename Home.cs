@@ -87,7 +87,8 @@ namespace cineteca
         private void filmButton_Store_click(object sender, EventArgs e) {
             Button btn = sender as Button;
             Form filmSpec = new FilmSpec(utenteAttuale, btn.Image, Convert.ToInt32(((Film)btn.Tag).id), ((Film)btn.Tag).titolo, ((Film)btn.Tag).descrizione, ((Film)btn.Tag).disponibile);
-            filmSpec.Show();
+            filmSpec.ShowDialog();
+            this.LoadStore();
         }
 
         private void btn_library_Click_1(object sender, EventArgs e)
@@ -116,18 +117,6 @@ namespace cineteca
 
             
         }
-
-        /*
-        private void btn_addFilm_Click(object sender, EventArgs e)
-        {
-            this.Enabled = false;   //Disabilitiamo home
-            Form addFilm = new AddFilm();//Creiamo "addFilm" form
-
-            addFilm.ShowDialog();//Apro Home
-            this.Enabled = true; //Chiudo tutto altrimenti rimane nascosto e non si chiude il programma
-            btn_refresh_Click(this,e); //Richiamo funzione per fare refresh
-
-        }*/
 
         private void LoadLibrary() {
             try
@@ -184,7 +173,8 @@ namespace cineteca
         {
             Button btn = sender as Button;
             Form filmSpec = new FilmSpec(utenteAttuale, btn.Image, Convert.ToInt32(((Film)btn.Tag).id), ((Film)btn.Tag).titolo, ((Film)btn.Tag).descrizione);
-            filmSpec.Show();
+            filmSpec.ShowDialog();
+            this.LoadLibrary();
         }
 
         private void btn_add_film_Click(object sender, EventArgs e)
