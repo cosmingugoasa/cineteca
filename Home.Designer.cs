@@ -131,6 +131,7 @@
             this.btn_manage.Name = "btn_manage";
             this.btn_manage.Size = new System.Drawing.Size(63, 20);
             this.btn_manage.Text = "Manage";
+            this.btn_manage.Visible = false;
             // 
             // btn_add_film
             // 

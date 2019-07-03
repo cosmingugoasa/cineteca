@@ -31,7 +31,7 @@ namespace cineteca
 
         private void btn_register_Click(object sender, EventArgs e)
         {
-            if (tb_register_password.Text.Equals(tb_register_repeat_password.Text))
+            if (tb_register_password.Text.Equals(tb_register_repeat_password.Text) && IsValidEmail(tb_register_email.Text))
             {
                 int root = 0;                                       //Variabile per essere Utente ROOT
                 if (tb_register_admin_code.Text == "root")          //Controllo codice
@@ -57,8 +57,22 @@ namespace cineteca
             }
             else
             {
-                l_operation_status.Text = "Password don't match";
+                l_operation_status.Text = "Password don't match or Invalid E-Mail";
             }  
         }
+
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }

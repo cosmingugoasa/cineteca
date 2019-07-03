@@ -198,12 +198,11 @@
             // 
             this.l_operation_status.AutoSize = true;
             this.l_operation_status.ForeColor = System.Drawing.Color.DarkRed;
-            this.l_operation_status.Location = new System.Drawing.Point(303, 191);
+            this.l_operation_status.Location = new System.Drawing.Point(252, 192);
             this.l_operation_status.Name = "l_operation_status";
-            this.l_operation_status.Size = new System.Drawing.Size(16, 13);
+            this.l_operation_status.Size = new System.Drawing.Size(0, 13);
             this.l_operation_status.TabIndex = 17;
-            this.l_operation_status.Text = "...";
-            this.l_operation_status.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.l_operation_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // RegisterForm
             // 

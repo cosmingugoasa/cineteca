@@ -1,13 +1,6 @@
 ﻿using cineteca.ServiceReference;
-using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace cineteca
@@ -37,21 +30,44 @@ namespace cineteca
         }
 
         private void btn_login_Click(object sender, EventArgs e)
-        {   
-
-            if (wcfClient.LoginUser(tb_email_login.Text,tb_password_login.Text))        //controllo se credenziali corrette
+        {
+            if (IsValidEmail(tb_email_login.Text))
             {
-                OperationStatus.Text = "Login completed";
-               
-                Form homeForm = new Home(wcfClient.GetUser(tb_email_login.Text));       //Creiamo HomeForm e passiamo oggetto utente
-                
-                this.Hide();        //nascondo LoginForm
-                homeForm.ShowDialog();      //Apro Home
-                this.Close();       //Chiudo tutto altrimenti rimane nascosto e non si chiude il programma
+                if (wcfClient.LoginUser(tb_email_login.Text, tb_password_login.Text))        //controllo se credenziali corrette
+                {
+                    OperationStatus.Text = "Login completed";
+
+                    Form homeForm = new Home(wcfClient.GetUser(tb_email_login.Text));       //Creiamo HomeForm e passiamo oggetto utente
+
+                    this.Hide();                //nascondo LoginForm
+                    homeForm.ShowDialog();      //Apro Home
+                    this.Close();               //Chiudo tutto altrimenti rimane nascosto e non si chiude il programma
+                }
+                else
+                {
+                    OperationStatus.Text = "Username or Password are incorrect";
+                }
             }
             else
             {
                 OperationStatus.Text = "Username or Password are incorrect";
+            }
+        }
+
+        /*
+         * controllo se e' una possibile mail dal punto di vista della sintassi, 
+         * non se e' una mail valida come destinatario di un messaggio 
+         */
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

@@ -90,8 +90,6 @@ namespace WCFServer
                 conn.Open();
                 if (conn.State == ConnectionState.Open)
                 {
-                    Console.WriteLine("Connessione DB aperta\n");
-
                     //Cerco sul DB se credenziali corrette
                     string Login_string = "SELECT * FROM UTENTE Where Email = '" + email + "' AND Passw = '" + passw + "'";
                     MySqlCommand cmd = new MySqlCommand(Login_string, conn);

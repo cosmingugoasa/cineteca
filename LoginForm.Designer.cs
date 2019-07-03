@@ -125,10 +125,12 @@
             // OperationStatus
             // 
             this.OperationStatus.AutoSize = true;
-            this.OperationStatus.Location = new System.Drawing.Point(182, 161);
+            this.OperationStatus.ForeColor = System.Drawing.Color.Firebrick;
+            this.OperationStatus.Location = new System.Drawing.Point(160, 161);
             this.OperationStatus.Name = "OperationStatus";
             this.OperationStatus.Size = new System.Drawing.Size(0, 13);
             this.OperationStatus.TabIndex = 9;
+            this.OperationStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LoginForm
             // 
