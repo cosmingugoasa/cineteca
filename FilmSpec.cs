@@ -8,12 +8,14 @@ namespace cineteca
     public partial class FilmSpec : Form
     {
         ServerServicesClient wcfClient = new ServerServicesClient();
-        Utente utenteAttuale;
-        int film_id;
 
+        Utente utenteAttuale;       //mantengo le info dell utente
+        int film_id;                //mantiene l'id del film su cui si ha cliccato, in modo da poter svolgere operazioni su di esso
+
+        //costruttore per bottoni dello store
         public FilmSpec(Utente myUtente, Image myImg, int myFilmId, string myTitolo, string myDesc, bool myDisp)
         {
-            InitializeComponent();
+            InitializeComponent();                  
             img_film.Image = myImg;
             film_id = myFilmId;
             l_titolo.Text = myTitolo;
@@ -35,6 +37,7 @@ namespace cineteca
             }
         }
 
+        //costruttore per bottoni della libreria
         public FilmSpec(Utente myUtente, Image myImg, int myFilmId, string myTitolo, string myDesc)
         {
             InitializeComponent();
@@ -52,6 +55,9 @@ namespace cineteca
 
         }
 
+        /*
+         * ricontrollo disponibilita' del film, se disponibile tento operazione di noleggio
+         */
         private void btn_noleggia_Click(object sender, EventArgs e)
         {
             DateTime date1;
@@ -73,12 +79,14 @@ namespace cineteca
                 }
             }
             else {
-                MessageBox.Show("Errore nel Noleggiare !");
+                MessageBox.Show("Film non piu' disponibile, qualcuno deve averlo noleggiato proprio ora !");
                 Close();
             }
-            
         }
 
+        /*
+         * cancello il noleggio, reimposto il film disponibile
+         */
         private void btn_restituisci_Click(object sender, EventArgs e)
         {
             if (wcfClient.ReturnFilm(utenteAttuale.id, film_id) && wcfClient.SetFilmStatus(film_id, true)){

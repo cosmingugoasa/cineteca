@@ -45,7 +45,7 @@
             this.l_titolo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.l_titolo.Location = new System.Drawing.Point(229, 12);
             this.l_titolo.Name = "l_titolo";
-            this.l_titolo.Size = new System.Drawing.Size(232, 27);
+            this.l_titolo.Size = new System.Drawing.Size(232, 74);
             this.l_titolo.TabIndex = 1;
             this.l_titolo.Text = "Titolo Film";
             this.l_titolo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -53,9 +53,9 @@
             // l_descrizione
             // 
             this.l_descrizione.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.l_descrizione.Location = new System.Drawing.Point(229, 52);
+            this.l_descrizione.Location = new System.Drawing.Point(229, 98);
             this.l_descrizione.Name = "l_descrizione";
-            this.l_descrizione.Size = new System.Drawing.Size(232, 201);
+            this.l_descrizione.Size = new System.Drawing.Size(232, 155);
             this.l_descrizione.TabIndex = 2;
             this.l_descrizione.Text = "Descrizione del film Descrizione del film Descrizione del film Descrizione del fi" +
     "lm Descrizione del film Descrizione del film";

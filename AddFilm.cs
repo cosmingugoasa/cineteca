@@ -1,12 +1,5 @@
 ﻿using cineteca.ServiceReference;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace cineteca
@@ -14,23 +7,19 @@ namespace cineteca
     public partial class AddFilm : Form
     {
         ServerServicesClient wcfClient = new ServerServicesClient();
+
         public AddFilm()
         {
             InitializeComponent();
-        }
-
-        private void LabelDisponibile_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btn_InsertFilm(object sender, EventArgs e)
         {
             try
             {
-                if(wcfClient.InsertFilm(tb_titolo.Text, tb_descrizone.Text, cb_disponibile.Checked, tb_urlCopertina.Text))
+                if(wcfClient.InsertFilm(tb_titolo.Text, tb_descrizone.Text, cb_disponibile.Checked, tb_urlCopertina.Text))          //inserisce film nel DB
                 {
-                    MessageBox.Show("FILM INSERITO CORRETTAMENTE");
+                    MessageBox.Show("Film inserito !");
                     tb_titolo.Clear();
                     tb_descrizone.Clear();
                     cb_disponibile.Checked = false;
@@ -38,7 +27,7 @@ namespace cineteca
                 }
                 else
                 {
-                    MessageBox.Show("ERRORE PARAMETRI NON CORRETTI, RIPROVA");
+                    MessageBox.Show("Errore. Parametri non corretti.");
                 }
             }
             catch (Exception ex)

@@ -81,7 +81,6 @@
             this.LabelDisponibile.Size = new System.Drawing.Size(63, 13);
             this.LabelDisponibile.TabIndex = 7;
             this.LabelDisponibile.Text = "Disponibilità";
-            this.LabelDisponibile.Click += new System.EventHandler(this.LabelDisponibile_Click);
             // 
             // labelDescrizione
             // 

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
 
 namespace WCFServer
 {
@@ -11,15 +6,15 @@ namespace WCFServer
     public class Film
     {
         [DataMember]
-        int id { get; set; }
+        int id { get; }
         [DataMember]
-        string titolo { get; set; }
+        string titolo { get; }
         [DataMember]
-        string descrizione { get; set; }
+        string descrizione { get; }
         [DataMember]
-        bool disponibile { get; set; }
+        bool disponibile { get; }
         [DataMember]
-        string url_image { get; set; }
+        string url_image { get; }
 
         public Film(int myId, string myTitolo, string myDescrizione, bool myDisp, string myUrl)
         {

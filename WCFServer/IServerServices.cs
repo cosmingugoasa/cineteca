@@ -40,5 +40,6 @@ namespace WCFServer
 
         [OperationContract]
         bool GetFilmDisp(int film_id);
+
     }
 }

@@ -21,16 +21,16 @@ namespace WCFServer
             Utente myUtente = new Utente();
             try
             {
-                conn.Open();
-                string strQuery = "SELECT * FROM UTENTE where email = '" + email + "'";
-                MySqlCommand cmd = new MySqlCommand(strQuery, conn);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                conn.Open();                                                                //apro connessione al DB
+                string strQuery = "SELECT * FROM UTENTE where email = '" + email + "'";     //stringa query
+                MySqlCommand cmd = new MySqlCommand(strQuery, conn);                        //creo comando
+                MySqlDataReader reader = cmd.ExecuteReader();                               //eseguo comando, tramite reader per avere i record tornati
 
                 while (reader.Read())
                 {
                     myUtente = new Utente(Convert.ToInt32(reader["Id"]), reader["Email"].ToString(), reader["Passw"].ToString(), reader["Nome"].ToString(), reader["Cognome"].ToString(), Convert.ToBoolean(reader["IsAdmin"]));
                 }
-                return myUtente;
+                return myUtente;            //creo utente 
             }
             catch (Exception e)
             {
@@ -42,19 +42,19 @@ namespace WCFServer
                 conn.Close();
             }
         }
-
-        public bool RegisterUser(string email, string passw, string nome, string cognome, int isAdmin) //Registrazione dell'utente su db
+        
+        //Registrazione dell'utente su db
+        public bool RegisterUser(string email, string passw, string nome, string cognome, int isAdmin) 
         {    
             try
             {
                 conn.Open();
                 if (conn.State == ConnectionState.Open)
                 {
-                    Console.WriteLine("Connessione DB aperta\n");
                     string cmd_string = "INSERT INTO UTENTE (Email, Passw, Nome, Cognome, IsAdmin) VALUES ('" + email + "', '" + passw + "', '" + nome + "', '" + cognome + "', '" + isAdmin + "')";
                     MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
-                    if (cmd.ExecuteReader().HasRows) {
-
+                    if (cmd.ExecuteReader().HasRows)    //controllo se il DB mi ritorna dei record
+                    {      
                         conn.Close();
                         conn.Dispose();
                         return true;
@@ -96,7 +96,7 @@ namespace WCFServer
                     string Login_string = "SELECT * FROM UTENTE Where Email = '" + email + "' AND Passw = '" + passw + "'";
                     MySqlCommand cmd = new MySqlCommand(Login_string, conn);
 
-                    if (cmd.ExecuteReader().HasRows)
+                    if (cmd.ExecuteReader().HasRows)        //controllo se il DB mi ritorna dei record
                     {
                         conn.Close();
                         conn.Dispose();
@@ -124,10 +124,9 @@ namespace WCFServer
             }
         }
 
-        public List<Film> StoreFilmsList() //Ritorna lista di film dal DB da caricare nella home
+        public List<Film> StoreFilmsList()      //Ritorna lista di film dal DB da caricare nella home
         {     
             List<Film> films = new List<Film>();
-
             try
             {
                 conn.Open();
@@ -136,7 +135,7 @@ namespace WCFServer
                     string query = "SELECT * FROM FILM";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     MySqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
+                    while (reader.Read())                               //creo lista dei film disponibili da mandare al client
                     {
                         Film film = new Film(Convert.ToInt32(reader.GetString(0)), reader.GetString(1), reader.GetString(2), Convert.ToBoolean(reader.GetString(3)), reader.GetString(4));
                         films.Add(film);
@@ -160,31 +159,30 @@ namespace WCFServer
             }
         }
 
-        public bool RentFilm(int user_id, int film_id, string start_nol, string stop_nol) { //Restituire film noleggiato
-
+        public bool RentFilm(int user_id, int film_id, string start_nol, string stop_nol)       //Restituire film noleggiato
+        { 
             try
             {
                 conn.Open();
                 if (conn.State == ConnectionState.Open)
                 {
-                    MySqlTransaction transaction = conn.BeginTransaction();
+                    MySqlTransaction transaction = conn.BeginTransaction();         //creo transazione per assicurarmi che tutte le query abbiano successo
                     string cmd_string = "INSERT INTO NOLEGGIO (IdUtente, IdFilm, InizioNoleggio, FineNoleggio) VALUES ('" + user_id + "', '" + film_id + "', '" + start_nol + "', '" + stop_nol + "')";
                     MySqlCommand cmd = new MySqlCommand(cmd_string, conn, transaction);
 
                     try
                     {
                         cmd.ExecuteNonQuery();
-                        transaction.Commit();
+                        transaction.Commit();                   //se le query hanno successo, salva le modifiche fatte al db
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e.ToString());
-                        transaction.Rollback();
+                        transaction.Rollback();                 //se le query falliscono annulla tutto
                     }
                     finally {
                         conn.Close();
-                    }
-                                        
+                    }       
                     return true;
                 }
                 else
@@ -201,7 +199,7 @@ namespace WCFServer
             }
         }
 
-        public bool SetFilmStatus(int film_id, bool disp) { //Si rende indisponibile il film
+        public bool SetFilmStatus(int film_id, bool disp) {         //Si rende indisponibile il film
             try
             {
                 conn.Open();
@@ -229,7 +227,7 @@ namespace WCFServer
             }
         }
 
-        public List<Film> LibraryFilmsList(int user_id) {
+        public List<Film> LibraryFilmsList(int user_id) {       //creo lista di film presenti nella libreria di un determinato utente
 
             List<Film> films = new List<Film>();
             try
@@ -240,7 +238,7 @@ namespace WCFServer
                     string query = "SELECT * FROM NOLEGGIO, FILM WHERE IdFilm = FILM.Id AND IdUtente = " + user_id;
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     MySqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
+                    while (reader.Read())       //creo film e lo aggiungo alla lista
                     {
                         Console.WriteLine(reader["IdFilm"] + " " + reader["Titolo"]);
                         Film film = new Film(Convert.ToInt32(reader["IdFilm"]), reader["Titolo"].ToString(), reader["Descrizione"].ToString(), Convert.ToBoolean(reader["Disponibile"]), reader["UrlImage"].ToString());
@@ -254,7 +252,6 @@ namespace WCFServer
                     Console.WriteLine("Connessione DB fallita\n");
                     return films;
                 }
-
             }
             catch (Exception ex)
             {
@@ -265,7 +262,7 @@ namespace WCFServer
             }
         }
 
-        public bool ReturnFilm(int user_id, int film_id)
+        public bool ReturnFilm(int user_id, int film_id)        //restituisco film al DB e lo rendo disponibile per altri utenti
         {
             try
             {
@@ -291,8 +288,7 @@ namespace WCFServer
             }
         }
 
-        public bool InsertFilm(string titolo, string descrizione, bool disponibile, string url_image)  { //Inserisce film nel DB
-
+        public bool InsertFilm(string titolo, string descrizione, bool disponibile, string url_image)  {        //Inserisce film nel DB
             try
             {
                 conn.Open();
@@ -320,7 +316,6 @@ namespace WCFServer
                     conn.Dispose();
                     return false;
                 }
-
             }
             catch (Exception ex)
             {
@@ -330,7 +325,7 @@ namespace WCFServer
             }
         }
 
-        public bool GetFilmDisp(int film_id) {
+        public bool GetFilmDisp(int film_id) {          //controllo se il film e' disponibile per il noleggio
             bool status = false;
             try
             {
