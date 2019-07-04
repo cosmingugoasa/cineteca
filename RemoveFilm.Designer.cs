@@ -31,6 +31,7 @@
             this.cb_listafilm = new System.Windows.Forms.ComboBox();
             this.lb_cbFilm = new System.Windows.Forms.Label();
             this.btn_RemoveFilm = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cb_listafilm
@@ -60,11 +61,21 @@
             this.btn_RemoveFilm.UseVisualStyleBackColor = true;
             this.btn_RemoveFilm.Click += new System.EventHandler(this.btn_RemoveFilm_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(39, 87);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(263, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "ATTENZIONE: film noleggiati non si possono eliminare";
+            // 
             // RemoveFilm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 190);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_RemoveFilm);
             this.Controls.Add(this.lb_cbFilm);
             this.Controls.Add(this.cb_listafilm);
@@ -80,5 +91,6 @@
         private System.Windows.Forms.ComboBox cb_listafilm;
         private System.Windows.Forms.Label lb_cbFilm;
         private System.Windows.Forms.Button btn_RemoveFilm;
+        private System.Windows.Forms.Label label1;
     }
 }

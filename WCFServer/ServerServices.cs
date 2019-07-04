@@ -30,16 +30,16 @@ namespace WCFServer
                 {
                     myUtente = new Utente(Convert.ToInt32(reader["Id"]), reader["Email"].ToString(), reader["Passw"].ToString(), reader["Nome"].ToString(), reader["Cognome"].ToString(), Convert.ToBoolean(reader["IsAdmin"]));
                 }
+                conn.Close();
+                conn.Dispose();
                 return myUtente;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
-                return myUtente;
-            }
-            finally
-            {
                 conn.Close();
+                conn.Dispose();
+                return myUtente;
             }
         }
 
@@ -50,26 +50,30 @@ namespace WCFServer
                 conn.Open();
                 if (conn.State == ConnectionState.Open)
                 {
+                    MySqlTransaction transaction = conn.BeginTransaction();
                     string cmd_string = "INSERT INTO UTENTE (Email, Passw, Nome, Cognome, IsAdmin) VALUES ('" + email + "', '" + passw + "', '" + nome + "', '" + cognome + "', '" + isAdmin + "')";
-                    MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
-                    if (cmd.ExecuteNonQuery() > 0)
+                    MySqlCommand cmd = new MySqlCommand(cmd_string, conn, transaction);                 
+                    try
                     {
+                        transaction.Commit();
                         conn.Close();
                         conn.Dispose();
                         return true;
                     }
-                    else
+                    catch(Exception ex)
                     {
+                        Console.WriteLine(ex.ToString());
+                        transaction.Rollback();
                         conn.Close();
                         conn.Dispose();
-                        Console.WriteLine("ERRORE REGISTRAZIONE\n");
                         return false;
                     }
-
                 }
                 else
                 {
                     Console.WriteLine("Connessione DB fallita\n");
+                    conn.Close();
+                    conn.Dispose();
                     return false;
                 }
             }
@@ -110,6 +114,8 @@ namespace WCFServer
                 else
                 {
                     Console.WriteLine("Connessione DB fallita\n");
+                    conn.Close();
+                    conn.Dispose();
                     return false;
                 }
             }
@@ -120,6 +126,7 @@ namespace WCFServer
                 conn.Dispose();
                 return false;
             }
+
         }
 
         public List<Film> StoreFilmsList() //Ritorna lista di film dal DB da caricare nella home 
@@ -146,6 +153,8 @@ namespace WCFServer
                 else
                 {
                     Console.WriteLine("Connessione DB fallita\n");
+                    conn.Close();
+                    conn.Dispose();
                     return films;
                 }
             }
@@ -174,22 +183,24 @@ namespace WCFServer
                     {
                         cmd.ExecuteNonQuery();
                         transaction.Commit();
+                        conn.Close();
+                        conn.Dispose();
+                        return true;
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e.ToString());
                         transaction.Rollback();
-                    }
-                    finally
-                    {
                         conn.Close();
+                        conn.Dispose();
+                        return false;
                     }
-
-                    return true;
                 }
                 else
                 {
                     Console.WriteLine("Connessione DB fallita\n");
+                    conn.Close();
+                    conn.Dispose();
                     return false;
                 }
             }
@@ -197,6 +208,7 @@ namespace WCFServer
             {
                 Console.WriteLine(ex.ToString());
                 conn.Close();
+                conn.Dispose();
                 return false;
             }
         }
@@ -208,16 +220,32 @@ namespace WCFServer
                 conn.Open();
                 if (conn.State == ConnectionState.Open)
                 {
+                    MySqlTransaction transaction = conn.BeginTransaction();
                     string cmd_string = "UPDATE FILM SET Disponibile = " + Convert.ToInt32(disp) + " WHERE FILM.Id = " + film_id + ";";
-                    MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    return true;
+                    MySqlCommand cmd = new MySqlCommand(cmd_string, conn, transaction);
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        transaction.Commit();
+                        conn.Close();
+                        conn.Dispose();
+                        return true;                      
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.ToString());
+                        transaction.Rollback();
+                        conn.Close();
+                        conn.Dispose();
+                        return false;
+                    }
                 }
                 else
                 {
                     Console.WriteLine("Connessione DB fallita\n");
                     Console.WriteLine();
+                    conn.Close();
+                    conn.Dispose();
                     return false;
                 }
             }
@@ -225,6 +253,8 @@ namespace WCFServer
             {
                 Console.WriteLine(ex.ToString());
                 conn.Close();
+                conn.Close();
+                conn.Dispose();
                 return false;
             }
         }
@@ -253,6 +283,8 @@ namespace WCFServer
                 else
                 {
                     Console.WriteLine("Connessione DB fallita\n");
+                    conn.Close();
+                    conn.Dispose();
                     return films;
                 }
 
@@ -273,15 +305,32 @@ namespace WCFServer
                 conn.Open();
                 if (conn.State == ConnectionState.Open)
                 {
+                    MySqlTransaction transaction = conn.BeginTransaction();              
                     string cmd_delete = "DELETE FROM NOLEGGIO WHERE IdUtente = " + user_id + " AND IdFilm = " + film_id;
-                    MySqlCommand cmd = new MySqlCommand(cmd_delete, conn);
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    return true;
+                    MySqlCommand cmd = new MySqlCommand(cmd_delete, conn, transaction);
+
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        transaction.Commit();
+                        conn.Close();
+                        conn.Dispose();
+                        return true;
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.ToString());
+                        transaction.Rollback();
+                        conn.Close();
+                        conn.Dispose();
+                        return false;
+                    }
                 }
                 else
                 {
                     Console.WriteLine("Connessione DB fallita\n");
+                    conn.Close();
+                    conn.Dispose();
                     return false;
                 }
             }
@@ -289,6 +338,7 @@ namespace WCFServer
             {
                 Console.WriteLine(ex.ToString());
                 conn.Close();
+                conn.Dispose();
                 return false;
             }
         }
@@ -301,17 +351,22 @@ namespace WCFServer
                 conn.Open();
                 if (conn.State == ConnectionState.Open)
                 {
+                    MySqlTransaction transaction = conn.BeginTransaction();
                     string cmd_string = "INSERT INTO FILM (Titolo, Descrizione, Disponibile, UrlImage) VALUES ('" + titolo + "', '" + descrizione + "', " + disponibile + ", '" + url_image + "')";
-                    MySqlCommand cmd = new MySqlCommand(cmd_string, conn);
+                    MySqlCommand cmd = new MySqlCommand(cmd_string, conn, transaction);
 
-                    if (cmd.ExecuteNonQuery() > 0)
+                    try
                     {
-                        conn.Close();
-                        conn.Dispose();
-                        return true;
+                            cmd.ExecuteNonQuery();
+                            transaction.Commit();
+                            conn.Close();
+                            conn.Dispose();
+                            return true;
                     }
-                    else
+                    catch (Exception e)
                     {
+                        Console.WriteLine(e.ToString());
+                        transaction.Rollback();
                         conn.Close();
                         conn.Dispose();
                         return false;
@@ -330,6 +385,7 @@ namespace WCFServer
             {
                 Console.WriteLine(ex.ToString());
                 conn.Close();
+                conn.Dispose();
                 return false;
             }
         }
@@ -349,17 +405,17 @@ namespace WCFServer
                     {
                         cmd.ExecuteNonQuery();
                         transaction.Commit();
+                        conn.Close();
+                        conn.Dispose();
                         return true;
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e.ToString());
                         transaction.Rollback();
-                        return false;
-                    }
-                    finally
-                    {
                         conn.Close();
+                        conn.Dispose();
+                        return false;
                     }
                 }
                 else
@@ -375,6 +431,7 @@ namespace WCFServer
             {
                 Console.WriteLine(ex.ToString());
                 conn.Close();
+                conn.Dispose();
                 return false;
             }
         }
@@ -409,7 +466,8 @@ namespace WCFServer
             {
                 Console.WriteLine(ex.ToString());
                 conn.Close();
-                return status = false; ;
+                conn.Dispose();
+                return status = false;
             }
         }
     }

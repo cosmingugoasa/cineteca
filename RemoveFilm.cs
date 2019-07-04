@@ -18,11 +18,18 @@ namespace cineteca
         {
             InitializeComponent();
 
-            List<Film> films = wcfClient.StoreFilmsList().ToList();
-            foreach (Film film in films)
+            try
             {
-                if(film.disponibile == true) //Se film disponibile lo aggiungo alla lista da eliminare
-                    cb_listafilm.Items.Add(film.titolo);
+                List<Film> films = wcfClient.StoreFilmsList().ToList();
+                foreach (Film film in films)
+                {
+                    if (film.disponibile == true) //Se film disponibile lo aggiungo alla lista da eliminare
+                        cb_listafilm.Items.Add(film.titolo);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("SERVER NON ATTIVO");
             }
         }
 

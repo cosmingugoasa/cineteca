@@ -14,43 +14,48 @@ namespace cineteca
         {
             InitializeComponent();
             regForm.Hide();
-            
-            try{                                                                 //controllo connettivita' con il server e aggiorno indicatore status
-                if (wcfClient.DoWork()) btn_status.BackColor = Color.Lime;
-            }
-            catch { 
-                btn_status.BackColor = Color.Red;
-            }
+
+            RefreshStatus(); //Aggiorna status server
         }
 
         private void bt_register_Click(object sender, EventArgs e)
         {
-            regForm.Show();     //switch tra form di login e form di register
             this.Hide();        //nascondo un form e visualizza l'altro
+            regForm.ShowDialog();     //switch tra form di login e form di register
+            this.Close();        //nascondo un form e visualizza l'altro
         }
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            if (IsValidEmail(tb_email_login.Text))
+            try
             {
-                if (wcfClient.LoginUser(tb_email_login.Text, tb_password_login.Text))        //controllo se credenziali corrette
+                if (IsValidEmail(tb_email_login.Text))
                 {
-                    OperationStatus.Text = "Login completed";
+                    if (wcfClient.LoginUser(tb_email_login.Text, tb_password_login.Text))        //controllo se credenziali corrette
+                    {
+                        OperationStatus.Text = "Login completed";
 
-                    Form homeForm = new Home(wcfClient.GetUser(tb_email_login.Text));       //Creiamo HomeForm e passiamo oggetto utente
+                        Form homeForm = new Home(wcfClient.GetUser(tb_email_login.Text));       //Creiamo HomeForm e passiamo oggetto utente
 
-                    this.Hide();                //nascondo LoginForm
-                    homeForm.ShowDialog();      //Apro Home
-                    this.Close();               //Chiudo tutto altrimenti rimane nascosto e non si chiude il programma
+                        this.Hide();                //nascondo LoginForm
+                        homeForm.ShowDialog();      //Apro Home
+                        this.Close();               //Chiudo tutto altrimenti rimane nascosto e non si chiude il programma
+                    }
+                    else
+                    {
+                        OperationStatus.Text = "Username or Password are incorrect";
+                    }
                 }
                 else
                 {
                     OperationStatus.Text = "Username or Password are incorrect";
                 }
             }
-            else
+            catch(Exception ex)
             {
-                OperationStatus.Text = "Username or Password are incorrect";
+                Console.WriteLine(ex.ToString());
+                OperationStatus.Text = "ERRORE, Controlla Connessione e riprova";
+                RefreshStatus();
             }
         }
 
@@ -68,6 +73,20 @@ namespace cineteca
             catch
             {
                 return false;
+            }
+        }
+
+
+        private void RefreshStatus()
+        {
+
+            try
+            {                                                                 //controllo connettivita' con il server e aggiorno indicatore status
+                if (wcfClient.DoWork()) btn_status.BackColor = Color.Lime;
+            }
+            catch
+            {
+                btn_status.BackColor = Color.Red;
             }
         }
     }

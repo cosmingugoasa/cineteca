@@ -91,16 +91,32 @@ namespace cineteca
 
         private void filmButton_Store_click(object sender, EventArgs e)
         {
-            Button btn = sender as Button;
-            Form filmSpec = new FilmSpec(utenteAttuale, btn.Image, Convert.ToInt32(((Film)btn.Tag).id), ((Film)btn.Tag).titolo, ((Film)btn.Tag).descrizione, ((Film)btn.Tag).disponibile);
-            filmSpec.ShowDialog();
+            try { 
+                Button btn = sender as Button;
+                Form filmSpec = new FilmSpec(utenteAttuale, btn.Image, Convert.ToInt32(((Film)btn.Tag).id), ((Film)btn.Tag).titolo, ((Film)btn.Tag).descrizione, ((Film)btn.Tag).disponibile);
+                filmSpec.Show();
+            }
+            catch(Exception ex)
+            {
+                Console.Write(ex.ToString());
+                MessageBox.Show("ERRORE CARICAMENTO FILM");
+            }
+
         }
 
         private void btn_library_Click_1(object sender, EventArgs e)
         {
-            LoadLibrary();      //carica solo i film che l'utente ha noleggiato
-            btn_store.Enabled = true;
-            btn_library.Enabled = false;
+            try
+            {
+                LoadLibrary();      //carica solo i film che l'utente ha noleggiato
+                btn_store.Enabled = true;
+                btn_library.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                MessageBox.Show("ERRORE CARICAMENTO LIBRERIA");
+            }
         }
 
         private void btn_logout_Click(object sender, EventArgs e)
@@ -111,15 +127,23 @@ namespace cineteca
         //pulisce il pannello dei film e fa il refresh per vedere se ci sono aggiornamenti dal DB
         private void btn_refresh_Click(object sender, EventArgs e)      
         {
-            if (btn_store.Enabled == false)
-            {
-                main_panel.Controls.Clear();
-                LoadStore();
+            try{
+
+                if (btn_store.Enabled == false)
+                {
+                    main_panel.Controls.Clear();
+                    LoadStore();
+                }
+                else if (btn_library.Enabled == false) {
+                    main_panel.Controls.Clear();
+                    LoadLibrary();
+                }
             }
-            else if (btn_library.Enabled == false) {
-                main_panel.Controls.Clear();
-                LoadLibrary();
-            }            
+            catch(Exception ex)
+            {
+                Console.Write(ex.ToString());
+                MessageBox.Show("IMPOSSIBILE EFFETTUARE REFRESH, CONTROLLARE CONNESSIONE");
+            }
         }
         
         private void LoadLibrary() {
@@ -174,30 +198,55 @@ namespace cineteca
         //handler per i bottoni presenti nella libreria dell'utente
         private void filmButton_Library_click(object sender, EventArgs e)
         {
-            Button btn = sender as Button;
-            Form filmSpec = new FilmSpec(utenteAttuale, btn.Image, Convert.ToInt32(((Film)btn.Tag).id), ((Film)btn.Tag).titolo, ((Film)btn.Tag).descrizione);
-            filmSpec.ShowDialog();
-            this.LoadLibrary();
+            try
+            {
+                Button btn = sender as Button;
+                Form filmSpec = new FilmSpec(utenteAttuale, btn.Image, Convert.ToInt32(((Film)btn.Tag).id), ((Film)btn.Tag).titolo, ((Film)btn.Tag).descrizione);
+                filmSpec.ShowDialog();
+                this.LoadLibrary();
+            }
+            catch(Exception ex)
+            {
+                Console.Write(ex.ToString());
+                MessageBox.Show("ERRORE CARICAMENTO LIBRERIA");
+            }
         }
 
         //addFIlm button
         private void addFilmToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Enabled = false;
-            Form addFilm = new AddFilm();       //Creiamo "addFilm" form
+            try
+            {
+                this.Enabled = false;
+                Form addFilm = new AddFilm();       //Creiamo "addFilm" form
 
-            addFilm.ShowDialog();               //Apro Form per aggiungere film
-            this.Enabled = true;                //Chiudo tutto altrimenti rimane nascosto e non si chiude il programma
-            btn_refresh_Click(this, e);         //Richiamo funzione per fare refresh
+                addFilm.ShowDialog();               //Apro Form per aggiungere film
+                this.Enabled = true;                //Chiudo tutto altrimenti rimane nascosto e non si chiude il programma
+                btn_refresh_Click(this, e);         //Richiamo funzione per fare refresh
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                MessageBox.Show("ERRORE ERRORE, NELL'APERTURA DEL FORM ADDFILM");
+            }
+
         }
 
         private void btn_remove_Click(object sender, EventArgs e)
         {
-            this.Enabled = false;                   //disabilito home
-            Form removeFilm = new RemoveFilm();     //Creiamo "RemoveFilm" form
-            removeFilm.ShowDialog();
-            this.Enabled = true;                    //abilito home
-            btn_refresh_Click(this, e);             //Richiamo funzione per fare refresh
+            try
+            {
+                this.Enabled = false;                   //disabilito home
+                Form removeFilm = new RemoveFilm();     //Creiamo "RemoveFilm" form
+                removeFilm.ShowDialog();
+                this.Enabled = true;                    //abilito home
+                btn_refresh_Click(this, e);             //Richiamo funzione per fare refresh
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                MessageBox.Show("ERRORE, NELL'APERTURA DEL FORM REMOVES");
+            }
         }
     }
 }
